@@ -39,6 +39,8 @@ export default class MainApp extends React.Component {
                         <Link to="/articles" className = "nav-link">Articles</Link>
                     </NavItem>
                 </Nav>
+                <h1>about the project</h1>
+                <h1>team bio stuff down here</h1>
                 <Switch>
                     <Route path="/dashboard" render = {()=><Dashboard/>} />
                     <Route path="/contacts" render = {()=><Contacts/>} />

@@ -21,6 +21,10 @@
   <div class="actions">
     <%= f.submit "Log in" %>
   </div>
+
+  <div class="mb-6">
+    <%= link_to "Sign in with LinkedIn", user_linkedin_omniauth_authorize_path, class: "btn bg-blue-500 text-white w-full block text-center" %>
+  </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
