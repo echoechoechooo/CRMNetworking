@@ -52,6 +52,6 @@ gem "bootstrap", "~> 4.3"
 gem "devise", "~> 4.7"
 
 gem 'omniauth'
-gem 'omniauth-linkedin'
+gem 'omniauth-linkedin-oauth2'
 
 gem "sidekiq", "~> 6.0"
