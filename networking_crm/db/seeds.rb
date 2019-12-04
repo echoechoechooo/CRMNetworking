@@ -32,9 +32,7 @@ todo_data.each do |attributes|
         todo.update(attributes)
     end
 end
-    
-    
-    
+
     
     
     
