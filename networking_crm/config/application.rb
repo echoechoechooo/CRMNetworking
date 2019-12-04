@@ -23,6 +23,7 @@ module NetworkingCrm
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    config.hosts << "1acc7e4fb4634a1c8e1284995161027e.vfs.cloud9.us-east-2.amazonaws.com"
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
