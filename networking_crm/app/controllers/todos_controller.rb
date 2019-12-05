@@ -1,20 +1,11 @@
 class TodosController < ApplicationController
-    before_action :authenticate_user!, only: [:show, :create, :destroy, :edit, :update]
+    before_action :authenticate_user!, only: [:show, :create, :destroy, :update]
     
     def index
         @todos = Todo.all
     end
     
     def show
-    end
-    
-    def new
-        @todo = Todo.new
-    end
-    
-    def edit
-        @todo = current_user.todos.find params [:id]
-        render json: todo
     end
     
     def create

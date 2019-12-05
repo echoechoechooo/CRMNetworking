@@ -1,20 +1,11 @@
 class ContactsController < ApplicationController
-    before_action :authenticate_user!, only: [:show, :create, :destroy, :edit, :update]
+    before_action :authenticate_user!, only: [:show, :create, :destroy, :update]
     
     def index
         @contacts = contact.all
     end
     
     def show
-    end
-    
-    def new
-        @contact = contact.new
-    end
-    
-    def edit
-        @contact = current_user.contacts.find params [:id]
-        render json: contact
     end
     
     def create
