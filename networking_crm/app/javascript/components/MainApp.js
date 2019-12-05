@@ -18,7 +18,7 @@ import Sidebar from "react-sidebar";
 export default class MainApp extends React.Component {
 
     clickIt = () => {
-        console.log("clicked")
+
     }
 
   render () {
@@ -123,49 +123,3 @@ export default class MainApp extends React.Component {
     );
   }
 }
-// <div className="col-lg-4">
-// <div className="bs-component">
-//   <div className="list-group">
-//     <a href="#" className="list-group-item list-group-item-action flex-column align-items-start active">
-//       <div className="d-flex w-100 justify-content-between">
-//         <h5 className="mb-1">List group item heading</h5>
-//         <small>3 days ago</small>
-//       </div>
-//       <p className="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-//       <small>Donec id elit non mi porta.</small>
-//     </a>
-//     <a href="#" className="list-group-item list-group-item-action flex-column align-items-start">
-//       <div className="d-flex w-100 justify-content-between">
-//         <h5 className="mb-1">List group item heading</h5>
-//         <small className="text-muted">3 days ago</small>
-//       </div>
-//       <p className="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-//       <small className="text-muted">Donec id elit non mi porta.</small>
-//     </a>
-//   </div>
-// <button className="source-button btn btn-primary btn-xs" role="button" tabindex="0">&lt; &gt;</button></div>
-// </div>
-// <ListGroup>
-//   <ListGroupItem>Cras justo odio</ListGroupItem>
-//   <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-//   <ListGroupItem>Morbi leo risus</ListGroupItem>
-//   <ListGroupItem>Porta ac consectetur ac</ListGroupItem>
-//   <ListGroupItem>Vestibulum at eros</ListGroupItem>
-// </ListGroup>
-//
-// <div>
-//     <Nav vertical className="navbar navbar-dark bg-dark">
-//         <NavItem className = "nav-item btn btn-outline-success">
-//           <NavLink className = "btn-outline-success" href="#">Link</NavLink>
-//         </NavItem>
-//         <NavItem className = "nav-item btn btn-outline-success">
-//           <NavLink className = "btn-outline-success" href="#">Link</NavLink>
-//         </NavItem>
-//         <NavItem className = "nav-item">
-//           <button onClick = {this.clickIt} style ={{backgroundColor: 'red'}} className = "btn-outline-success">Another Link</button>
-//         </NavItem>
-//         <NavItem>
-//           <NavLink className = "btn-outline-success" disabled href="#">Disabled Link</NavLink>
-//         </NavItem>
-//     </Nav>
-// </div>
