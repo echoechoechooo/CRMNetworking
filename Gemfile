@@ -56,3 +56,5 @@ gem 'omniauth-linkedin-oauth2'
 gem 'httparty'
 # gem 'omniauth-oauth2', '~> 1.3.1'
 gem "sidekiq", "~> 6.0"
+
+gem "linkedin", "~> 1.1"
