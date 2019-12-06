@@ -7,7 +7,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         
         access_token = request.env['omniauth.auth']['credentials'].token
         p access_token
-        # current_user.update(access_token: access_token, strategy: "github")
+        @user.update(access_token: access_token, strategy: "github")
         if @user.persisted?
           sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
           set_flash_message(:notice, :success, kind: "GitHub") if is_navigational_format?
