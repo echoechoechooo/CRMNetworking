@@ -5,48 +5,53 @@ import
 
 
 export default class EditContact extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-        contactId: -1,
-        form: {
-            first_name: "",
-            last_name: ""
-        },
-        editSuccess: false
+    constructor(props){
+        super(props)
+        this.state = {
+            contactId: -1,
+            form: {
+                first_name: "",
+                last_name: ""
+            },
+            editSuccess: false
+        }
     }
-}
 
-getCurrentContact = () => {
-    let id = this.props.match.params.id
-    if(id == this.state.contactId){
-        return
+    getCurrentContact = () => {
+        let id = this.props.match.params.id
+        if(id == this.state.contactId){
+            return
+        }
+        let url = "/contacts/" + this.props.match.params.id.toString() + "/edit"
+        fetch(url)
+        .then(resp => {
+            return resp.json()})
+            .then(contact => {
+                let{form} = this.state
+                form["first_name"] = contact.first_name
+                form["last_name"] = contact.last_name
+                this.setState({form, contactId: id})})
     }
-    let url = "/contacts/" + this.props.match.params.id.toString() + "/edit"
-    fetch(url)
-    .then(resp => {
-        return resp.json()})
-        .then(contact => {
-            let{form} = this.state
-            form["first_name"] = contact.first_name
-            form["last_name"] = contact.last_name
-            this.setState({form, contactId: id})})
-}
 
-onChange = (e) => {
-    const{form} = this.state
-    const{name,value} = e.target
-    form[name] = value
-    this.setState({form})
-}
+    onChange = (e) => {
+        const{form} = this.state
+        const{name,value} = e.target
+        form[name] = value
+        this.setState({form})
+    }
 
-localSubmit= () => {
-    const{onSubmit} = this.props
-    const{form, contactId} = this.state
-    onSubmit(form,contactId).then(response =>{
-        this.setState({editSuccess: true})
-    })
-}
+    localSubmit= () => {
+        const{onSubmit} = this.props
+        const{form, contactId} = this.state
+        onSubmit(contactId, "contacts").then(response =>{
+            this.setState({editSuccess: true})
+        })
+    }
+
+    changeIsDone = () => {
+        this.setState({is_done: !this.state.is_done})
+        console.log(this.state.is_done)
+    }
 
 
   render () {
