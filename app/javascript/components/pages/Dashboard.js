@@ -28,7 +28,7 @@ export default class Dashboard extends React.Component {
                 <tr onClick = {() => this.openContact(contact.id)} className="table-active">
                         <td style={{padding: "0px 0px 0px 0px"}}>
                             <Link to = {`/contacts/${contact.id}`} style={{fontSize: "20px", padding: "0px 0px 0px 10px"}}>{contact.first_name} {contact.last_name}</Link>
-                            <h3 style={{fontSize: "12px", padding: "0px 0px 0px 10px"}}>Connect with {contact.first_name}!</h3>
+                            <h3 style={{fontSize: "12px", padding: "0px 0px 0px 10px"}}>{contact.industry}</h3>
                         </td>
                     </tr>)
         })
@@ -53,7 +53,7 @@ export default class Dashboard extends React.Component {
             styles={{ sidebar: { top: "90px", background: "white"}, overlay: { backgroundColor:'clear', zIndex: -10 } }}
             >
             </Sidebar>
-            
+
         );
     }
 }
