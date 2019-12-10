@@ -91,7 +91,6 @@ export default class MainApp extends React.Component {
             }
         })
     }
->>>>>>> master
 
     delete = (id, type) => {
         let url = `/${type}/${id}`
