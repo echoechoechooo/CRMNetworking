@@ -1,11 +1,6 @@
 import React from "react"
 import Sidebar from "react-sidebar";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from "react-router-dom";
+import {Link} from "react-router-dom";
 import { Table } from 'reactstrap'
 import "../../fonts.css"
 
@@ -20,7 +15,6 @@ export default class Dashboard extends React.Component {
       }
       return "black"
     }
-
     render () {
         const{contacts, todos} = this.props
         let contactList =  contacts.map(contact => {
