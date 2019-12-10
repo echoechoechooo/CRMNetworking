@@ -21,8 +21,8 @@ export default class Dashboard extends React.Component {
             return (
                 <tr key = {contact.id} className="table-active">
                     <td style={{padding: "0px 0px 0px 0px"}}>
-                        <Link to = {`/contacts/${contact.id}`} style={{fontSize: "20px", padding: "0px 0px 0px 10px"}}>{contact.first_name} {contact.last_name}</Link>
-                        <h3 style={{fontSize: "12px", padding: "0px 0px 0px 10px"}}>{contact.industry}</h3>
+                        <Link to = {`/contacts/${contact.id}`} style={{fontSize: "20px", padding: "0px 0px 0px 10px", color: "white"}}>{contact.first_name} {contact.last_name}</Link>
+                        <h3 style={{fontSize: "12px", padding: "0px 0px 0px 10px", color: "white"}}>{contact.industry}</h3>
                     </td>
                 </tr>)
         })
@@ -44,16 +44,16 @@ export default class Dashboard extends React.Component {
                 <table className="table table-hover" style = {{width: "15vw"}}>
                   <thead>
                     <tr>
-                      <th scope="col" style = {{fontSize: "24px", padding: "10px 0px 10px 0px"}}>Contacts<Link to = {"/newcontact"} style={{padding: "0px 0px 0px 10px", float: "right"}}><img src = {addButton} style = {{width: "24px", height: "24px", verticalAlign: "inherit", textAlign: "right"}} /></Link></th>
+                      <th scope="col" style = {{fontSize: "24px", padding: "10px 0px 10px 0px", color:"white"}}>Contacts<Link to = {"/newcontact"} style={{padding: "0px 0px 0px 10px", float: "right"}}><img src = {addButton} style = {{width: "24px", height: "24px", verticalAlign: "inherit", textAlign: "right"}} /></Link></th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody className="sidebar">
                     {contactList}
                   </tbody>
                 </table> }
             docked = {true}
             transitions = {false}
-            styles={{ sidebar: { top: "90px", background: "white"}, overlay: { backgroundColor:'clear', zIndex: -10 } }}
+            styles={{ sidebar: { top: "90px", background: "#410082"}, overlay: { backgroundColor:'clear', zIndex: -10 } }}
             >
             </Sidebar>
 

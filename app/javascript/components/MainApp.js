@@ -18,6 +18,8 @@ import EditTodo from "./todos/EditTodo"
 import Calendar from "./pages/Calendar"
 import Articles from "./pages/Articles"
 import "bootswatch/dist/lux/bootstrap.min.css"
+import logo from "./logo.svg"
+import Background from "./background.jpg"
 let endPointArray =["contacts", "todos"]
 
 export default class MainApp extends React.Component {
@@ -111,13 +113,14 @@ export default class MainApp extends React.Component {
                 <Switch>
                     <Route exact path="/" render = {()=><Dashboard contacts = {contacts} todos = {todos} />} />
                 </Switch>
-                <Nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{backgroundColor: "black"}}>
+                <Nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor: "#410082"}}>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
                     <div className="collapse navbar-collapse" id="navbarColor02">
                         <ul className="navbar-nav mr-auto">
+                            <img src ={logo} />
                             <NavItem className = "nav-item">
                                 <Link to="/" className = "nav-link">Dashboard</Link>
                             </NavItem>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
 .singlecontact {
   text-align: center;
   padding-top: 50px;
@@ -16,4 +18,23 @@
 
 .navbar-nav mr-auto {
   text-align: right;
+}
+
+.sidebar {
+  font-family: 'house_on_marsregular';
+  text-decoration-color: #ffffff;
+  color: white;
+}
+
+@font-face {
+    font-family: 'house_on_marsregular';
+    src: url('house_on_mars-webfont.woff2') format('woff2'),
+         url('house_on_mars-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.html {
+  background-image: url("background.jpg");
 }
