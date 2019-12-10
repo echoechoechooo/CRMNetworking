@@ -2,10 +2,9 @@ require 'httparty'
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def github
-        # You need to implement the method below in your model (e.g. app/models/user.rb)
+        # Sign-in via Github & update user table
         @user = User.from_omniauth(request.env["omniauth.auth"])
         
-        p (request.env["omniauth.auth"])
         
         access_token = request.env['omniauth.auth']['credentials'].token
         followers = request.env['omniauth.auth']['extra']['raw_info'].followers_url
@@ -17,24 +16,18 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         contacts = Contact.all
         p response_followers = HTTParty.get(@user.followers_url)
         response_followers.each do |attributes| 
-            @user.contacts.where(login:attributes["login"]).first_or_create do |contact|
-            contact.update(avatar_url:attributes["avatar_url"], url:attributes["url"])
+            contact = @user.contacts.where(github_id:attributes["id"]).first_or_create
+            contact.update(login:attributes["login"],avatar_url:attributes["avatar_url"], url:attributes["url"])
             p contact
-            end
         end
-
+        
+        # get following_url data from Github
         p response_following = HTTParty.get(@user.following_url)
         response_following.each do |attributes| 
-            @user.contacts.where(login:attributes["login"]).first_or_create do |contact|
-            contact.update(avatar_url:attributes["avatar_url"], url:attributes["url"])
+            contact = @user.contacts.where(github_id:attributes["id"]).first_or_create
+            contact.update(login:attributes["login"], avatar_url:attributes["avatar_url"], url:attributes["url"])
             p contact
-            end
         end
-        # p @user
-        # nu_contact = Contact.new
-        # nu_contact.login = "ChristiPWright"
-        # @user.contacts << nu_contact
-        # nu_contact.save
         
         if @user.persisted?
           sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
