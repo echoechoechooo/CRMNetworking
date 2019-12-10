@@ -73,7 +73,7 @@ export default class MainApp extends React.Component {
     }
 
     edit = (attrs, id, type) => {
-        let url = `/${type}/` + id.toString()
+        let url = `/${type}/${id}`
         return fetch(url, {
             method: 'PUT',
             headers: {
@@ -88,7 +88,7 @@ export default class MainApp extends React.Component {
     }
 
     delete = (id, type) => {
-        let url = `/${type}/` + id.toString()
+        let url = `/${type}/${id}`
         return fetch(url, {
             method: 'DELETE'
         }).then(resp => {

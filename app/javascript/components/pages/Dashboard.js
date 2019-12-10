@@ -6,6 +6,7 @@ import {
   Link,
   Switch
 } from "react-router-dom";
+import { Table } from 'reactstrap'
 
 
 import addButton from "../../images/plusButton.png"
@@ -25,7 +26,7 @@ export default class Dashboard extends React.Component {
         })
 
         return (
-
+          <div>
             <Sidebar
             children={<div></div>}
             sidebar={
@@ -44,7 +45,25 @@ export default class Dashboard extends React.Component {
             styles={{ sidebar: { top: "90px", background: "white"}, overlay: { backgroundColor:'clear', zIndex: -10 } }}
             >
             </Sidebar>
-
+            <Sidebar
+            children={<div></div>}
+            sidebar={
+                <table className="table table-hover" style = {{width: "15vw"}}>
+                  <thead>
+                    <tr>
+                      <th scope="col" style = {{fontSize: "24px", padding: "10px 0px 10px 0px"}}>Contacts<Link to = {"/newcontact"} style={{padding: "0px 0px 0px 10px", float: "right"}}><img src = {addButton} style = {{width: "24px", height: "24px", verticalAlign: "inherit", textAlign: "right"}} /></Link></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {contactList}
+                  </tbody>
+                </table> }
+            docked = {true}
+            transitions = {false}
+            styles={{ sidebar: { top: "90px", background: "white"}, overlay: { backgroundColor:'clear', zIndex: -10 }, root: {left: "85vw"} }}
+            >
+            </Sidebar>
+          </div>
         );
     }
 }

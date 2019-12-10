@@ -13,8 +13,9 @@ export default class Todos extends React.Component {
 
   changeIsDone = (todo) => {
     todo.is_done = !todo.is_done
-    this.props.onSubmit(todo, todo.id, "todos").then(() =>{
-      this.setState({update: !this.state.updated})
+    this.props.onSubmit(todo, todo.id, "todos")
+    .then(() =>{
+      this.setState({updated: !this.state.updated})
     })
   }
 
@@ -28,7 +29,11 @@ export default class Todos extends React.Component {
     let todoList = todos.map(todo => {
       return (
           <tr key = {todo.id}>
-            <th scope="row">{todo.title}</th>
+            <th scope="row">
+              <p>
+              {todo.title}
+              </p>
+            </th>
             <th>{todo.description}</th>
             <th>{todo.due_date == null ? "": this.formatDate(todo)}</th>
             <th>
