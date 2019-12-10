@@ -20,7 +20,8 @@ export default class MainApp extends React.Component {
         super(props)
         this.state ={
             contacts: [],
-            todos: []
+            todos: [],
+            githubMembers: []
         }
     }
     componentDidMount (){
@@ -36,10 +37,10 @@ export default class MainApp extends React.Component {
         .then(todos => {
             this.setState({todos: todos})
         })
+    
     }
-
-
-
+    
+    
     clickIt = () => {
 
     }
