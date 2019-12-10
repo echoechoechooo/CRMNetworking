@@ -1,0 +1,23 @@
+#<OmniAuth::AuthHash 
+    credentials=#<OmniAuth::AuthHash expires=false token="286cf29f5df52c021cf9643069ab93a693b9864c"> 
+    extra=#<OmniAuth::AuthHash 
+        all_emails=#<Hashie::Array 
+            [#<OmniAuth::AuthHash 
+                email="ChristiPWright@gmail.com" 
+                primary=true 
+                verified=true 
+                visibility="private"
+            >, 
+            #<OmniAuth::AuthHash 
+                email="56043879+ChristiPWright@users.noreply.github.com" 
+                primary=false 
+                verified=true 
+                visibility=nil
+            >]
+        > 
+        raw_info=#<OmniAuth::AuthHash 
+            avatar_url="https://avatars2.githubusercontent.com/u/56043879?v=4" 
+            bio=nil blog="" company=nil created_at="2019-10-01T17:52:50Z" 
+            email=nil events_url="https://api.github.com/users/ChristiPWright/events{/privacy}" followers=2 
+            followers_url="https://api.github.com/users/ChristiPWright/followers" following=7 
+            following_url="https://api.github.com/users/ChristiPWright/following{/other_user}" gists_url="https://api.github.com/users/ChristiPWright/gists{/gist_id}" gravatar_id="" hireable=nil html_url="https://github.com/ChristiPWright" id=56043879 location=nil login="ChristiPWright" name=nil node_id="MDQ6VXNlcjU2MDQzODc5" organizations_url="https://api.github.com/users/ChristiPWright/orgs" public_gists=0 public_repos=12 received_events_url="https://api.github.com/users/ChristiPWright/received_events" repos_url="https://api.github.com/users/ChristiPWright/repos" site_admin=false starred_url="https://api.github.com/users/ChristiPWright/starred{/owner}{/repo}" subscriptions_url="https://api.github.com/users/ChristiPWright/subscriptions" type="User" updated_at="2019-12-09T18:05:37Z" url="https://api.github.com/users/ChristiPWright">> info=#<OmniAuth::AuthHash::InfoHash email="ChristiPWright@gmail.com" image="https://avatars2.githubusercontent.com/u/56043879?v=4" name=nil nickname="ChristiPWright" urls=#<OmniAuth::AuthHash Blog="" GitHub="https://github.com/ChristiPWright">> provider="github" uid="56043879">

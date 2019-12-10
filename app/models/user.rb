@@ -17,7 +17,7 @@ class User < ApplicationRecord
             # user.skip_confirmation!
         end
     end
-    
+
     has_many :todos
     has_many :contacts
 end
