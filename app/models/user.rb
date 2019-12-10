@@ -19,4 +19,5 @@ class User < ApplicationRecord
     end
     
     has_many :todos
+    has_many :contacts
 end
