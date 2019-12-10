@@ -1,8 +1,5 @@
 import React from "react"
 import {Redirect} from "react-router-dom"
-import
-    { Nav, NavItem, NavLink, Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap'
-
 
 export default class NewContact extends React.Component {
     constructor(props){
@@ -24,7 +21,13 @@ export default class NewContact extends React.Component {
     localSubmit = () => {
         const{onSubmit} = this.props
         const{form} = this.state
-        onSubmit(form).then(() => {
+        if(form.first_name.length===0){
+            return
+        }
+        if(form.last_name.length===0){
+            return
+        }
+        onSubmit(form, "contacts").then(() => {
             this.setState({createSucess: true})
         })
     }

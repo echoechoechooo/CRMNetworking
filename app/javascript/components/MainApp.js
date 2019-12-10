@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import {
   BrowserRouter as Router,
   Route,
@@ -9,12 +8,14 @@ import {
 import { Nav, NavItem, NavLink, Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap'
 import Dashboard from "./pages/Dashboard"
 import Contacts from "./pages/Contacts"
-import Calendar from "./pages/Calendar"
-import Todos from "./pages/Todos"
-import Articles from "./pages/Articles"
 import NewContact from "./pages/NewContact"
 import ShowContact from "./pages/ShowContact"
 import EditContact from "./pages/EditContact"
+import Todos from "./todos/Todos"
+import NewTodo from "./todos/NewTodo"
+import EditTodo from "./todos/EditTodo"
+import Calendar from "./pages/Calendar"
+import Articles from "./pages/Articles"
 import "bootswatch/dist/lux/bootstrap.min.css"
 let endPointArray =["contacts", "todos"]
 
@@ -27,60 +28,67 @@ export default class MainApp extends React.Component {
         }
     }
     componentDidMount (){
+        for(let i = 0; i < endPointArray.length; i++){
+            this.fetchIt(endPointArray[i])
+        }
+    }
 
-        fetch("/contacts")
+    fetchIt = (input) => {
+        fetch(`/${input}/`)
         .then(resp => {
             return resp.json()})
-        .then(contacts => {
-            this.setState({contacts: contacts})
-        })
-    }
-
-
-
-    clickIt = () => {
-
-    }
-
-    getContacts = () => {
-        fetch("/contacts")
-        .then(resp => {
-            return resp.json()})
-            .then(apts => {
-                this.setState({contacts: apts})})
-    }
-
-    addContact = (attrs) => {
-        return fetch("/contacts", {
-            method: 'POST',
-            headers: {
-                "Content-type":"application/json"
-            },
-            body: JSON.stringify({contact:attrs})
-        }).then(response => {
-            if(response.status === 201){
-                this.getContacts()
+        .then(output => {
+            switch(input){
+                case endPointArray[0]:
+                    this.setState({contacts: output})
+                    break
+                case endPointArray[1]:
+                    this.setState({todos: output})
+                    break
             }
         })
     }
 
-    editContact = (attrs, id) => {
-        let url = "/contacts/" + id.toString()
+    add = (attrs, type) => {
+        return fetch(`/${type}`, {
+            method: 'POST',
+            headers: {
+                "Content-type":"application/json"
+            },
+            body: JSON.stringify(this.getBodyObject(attrs,type))
+        }).then(response => {
+            if(response.status === 201){
+                this.fetchIt(type)
+            }
+        })
+    }
+
+    getBodyObject = (attrs, type) => {
+        switch(type){
+            case endPointArray[0]:
+                return {contact: attrs}
+            case endPointArray[1]:
+                return {todo: attrs}
+        }
+    }
+
+    edit = (attrs, id, type) => {
+        let url = `/${type}/${id}`
         return fetch(url, {
             method: 'PUT',
             headers: {
                 "Content-type":"application/json"
             },
-            body: JSON.stringify({contact:attrs})
+            body: JSON.stringify(this.getBodyObject(attrs,type))
         }).then(response => {
             if(response.status === 201){
-                this.getContacts()
+                this.fetchIt(type)
             }
         })
     }
 
-    deleteContact = (id) => {
-        let url = "/contacts/" + id.toString()
+    delete = (id, type) => {
+        let url = `/${type}/${id}`
         return fetch(url, {
             method: 'DELETE'
         }).then(resp => {
@@ -88,7 +96,7 @@ export default class MainApp extends React.Component {
                 console.log("error")
             }
             else {
-                this.getContacts()
+                this.fetchIt(type)
             }
         })
     }
@@ -100,7 +108,7 @@ export default class MainApp extends React.Component {
         <React.Fragment>
             <Router>
                 <Switch>
-                    <Route exact path="/" render = {()=><Dashboard contacts = {contacts} />} />
+                    <Route exact path="/" render = {()=><Dashboard contacts = {contacts} todos = {todos} />} />
                 </Switch>
                 <Nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{backgroundColor: "black"}}>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -119,10 +127,10 @@ export default class MainApp extends React.Component {
                                 <Link to="/contacts" className = "nav-link">Contacts</Link>
                             </NavItem>
                             <NavItem className = "nav-item">
-                                <Link to="/calendar" className = "nav-link">Calendar</Link>
+                                <Link to="/todos" className = "nav-link">Todos</Link>
                             </NavItem>
                             <NavItem className = "nav-item">
-                                <Link to="/todos" className = "nav-link">Todos</Link>
+                                <Link to="/calendar" className = "nav-link">Calendar</Link>
                             </NavItem>
                             <NavItem className = "nav-item">
                                 <Link to="/articles" className = "nav-link">Articles</Link>
@@ -132,12 +140,14 @@ export default class MainApp extends React.Component {
                 </Nav>
                 <Switch>
                     <Route exact path="/contacts" render = {()=><Contacts contacts = {contacts}/>} />
-                    <Route exact path="/contacts/:id" render = {(props)=><ShowContact {...props} currentUser = {current_user_id} deleteContact = {this.deleteContact}/>} />
+                    <Route exact path="/contacts/:id" render = {(props)=><ShowContact {...props} currentUser = {current_user_id} deleteContact = {this.delete}/>} />
+                    <Route exact path="/newcontact" render = {(props)=><NewContact {...props} onSubmit = {this.add}/>}/>
+                    <Route path = "/contacts/:id/edit" render = {(props) => <EditContact {...props} onSubmit = {this.edit}/>} />
+                    <Route exact path="/todos" render = {()=><Todos todos = {todos} onSubmit = {this.edit}/>} />
+                    <Route exact path="/newtodo" render = {(props)=><NewTodo {...props} onSubmit = {this.add}/>}/>
+                    <Route path = "/todos/:id/edit" render = {(props) => <EditTodo {...props} onSubmit = {this.edit} deleteTodo = {this.delete}  />} />
                     <Route exact path="/calendar" render = {()=><Calendar/>} />
-                    <Route exact path="/todos" render = {()=><Todos todos = {todos}/>} />
                     <Route exact path="/articles" render = {()=><Articles/>} />
-                    <Route exact path="/newcontact" render = {(props)=><NewContact {...props} onSubmit = {this.addContact}/>}/>
-                    {!logged_in ? null : <Route path = "/contacts/:id/edit" render = {(props) => <EditContact {...props} onSubmit = {this.editContact} />} />}
                 </Switch>
             </Router>
         </React.Fragment>
