@@ -14,19 +14,17 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         
         # get for followers_url to input into Contacts
         contacts = Contact.all
-        p response_followers = HTTParty.get(@user.followers_url)
+        response_followers = HTTParty.get(@user.followers_url)
         response_followers.each do |attributes| 
             contact = @user.contacts.where(github_id:attributes["id"]).first_or_create
             contact.update(login:attributes["login"],avatar_url:attributes["avatar_url"], url:attributes["url"])
-            p contact
         end
         
         # get following_url data from Github
-        p response_following = HTTParty.get(@user.following_url)
+        response_following = HTTParty.get(@user.following_url)
         response_following.each do |attributes| 
             contact = @user.contacts.where(github_id:attributes["id"]).first_or_create
             contact.update(login:attributes["login"], avatar_url:attributes["avatar_url"], url:attributes["url"])
-            p contact
         end
         
         if @user.persisted?
