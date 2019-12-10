@@ -108,7 +108,7 @@ export default class MainApp extends React.Component {
         <React.Fragment>
             <Router>
                 <Switch>
-                    <Route exact path="/" render = {()=><Dashboard contacts = {contacts} />} />
+                    <Route exact path="/" render = {()=><Dashboard contacts = {contacts} todos = {todos} />} />
                 </Switch>
                 <Nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{backgroundColor: "black"}}>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
