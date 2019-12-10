@@ -1,0 +1,7 @@
+@font-face{
+    font-family: 'houseonmars';
+    src: url('houseonmars/house_on_mars-webfont.woff2') format('woff2'), 
+    url('houseonmars/house_on_mars-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

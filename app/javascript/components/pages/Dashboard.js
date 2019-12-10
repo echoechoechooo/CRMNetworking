@@ -1,40 +1,43 @@
 import React from "react"
 import Sidebar from "react-sidebar";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from "react-router-dom";
-import NewContact from "./NewContact";
+import {Link} from "react-router-dom";
+import { Table } from 'reactstrap'
+import "../../fonts.css"
 
 
 import addButton from "../../images/plusButton.png"
 
 export default class Dashboard extends React.Component {
 
-    openContact = (id) => {
-        console.log(id)
+    getColor = (isNull) => {
+      if(isNull){
+        return "transparent"
+      }
+      return "black"
     }
-
-    addContact = () => {
-
-    }
-
     render () {
-        const{contacts} = this.props
+        const{contacts, todos} = this.props
         let contactList =  contacts.map(contact => {
             return (
-                <tr onClick = {() => this.openContact(contact.id)} className="table-active">
-                        <td style={{padding: "0px 0px 0px 0px"}}>
-                            <Link to = {`/contacts/${contact.id}`} style={{fontSize: "20px", padding: "0px 0px 0px 10px"}}>{contact.first_name} {contact.last_name}</Link>
-                            <h3 style={{fontSize: "12px", padding: "0px 0px 0px 10px"}}>{contact.industry}</h3>
-                        </td>
-                    </tr>)
+                <tr key = {contact.id} className="table-active">
+                    <td style={{padding: "0px 0px 0px 0px"}}>
+                        <Link to = {`/contacts/${contact.id}`} style={{fontSize: "20px", padding: "0px 0px 0px 10px"}}>{contact.first_name} {contact.last_name}</Link>
+                        <h3 style={{fontSize: "12px", padding: "0px 0px 0px 10px"}}>{contact.industry}</h3>
+                    </td>
+                </tr>)
+        })
+        let todoList = todos.filter(todo => !todo.is_done).map(todo => {
+          return (
+            <tr key = {todo.id} className="table-active">
+                <td style={{padding: "0px 0px 0px 0px"}}>
+                    <Link to = {`/todos/${todo.id}/edit`} style={{fontSize: "20px", padding: "0px 0px 0px 10px", fontFamily: 'houseonmars'}}>{todo.title}</Link>
+                    <h3 style={{fontSize: "12px", padding: "0px 0px 0px 10px", "color": (this.getColor(todo.due_date === null))}}>{new Date(todo.due_date).toLocaleDateString()} {new Date(todo.due_date).toLocaleString([], {hour: '2-digit', minute:'2-digit'})}</h3>
+                </td>
+            </tr>)
         })
 
         return (
-
+          <div>
             <Sidebar
             children={<div></div>}
             sidebar={
@@ -54,6 +57,25 @@ export default class Dashboard extends React.Component {
             >
             </Sidebar>
 
+            <Sidebar
+            children={<div></div>}
+            sidebar={
+                <table className="table table-hover" style = {{width: "15vw"}}>
+                  <thead>
+                    <tr>
+                      <th scope="col" style = {{fontSize: "24px", padding: "10px 0px 10px 0px"}}>Todos<Link to = {"/newcontact"} style={{padding: "0px 0px 0px 10px", float: "right"}}><img src = {addButton} style = {{width: "24px", height: "24px", verticalAlign: "inherit", textAlign: "right"}} /></Link></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {todoList}
+                  </tbody>
+                </table> }
+            docked = {true}
+            transitions = {false}
+            styles={{ sidebar: { top: "90px", background: "white"}, overlay: { backgroundColor:'clear', zIndex: -10 }, root: {left: "85vw"} }}
+            >
+            </Sidebar>
+          </div>
         );
     }
 }

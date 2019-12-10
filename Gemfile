@@ -58,3 +58,5 @@ gem 'httparty'
 gem "sidekiq", "~> 6.0"
 
 gem "linkedin", "~> 1.1"
+
+gem "omniauth-github", "~> 1.1", ">= 1.1.2"

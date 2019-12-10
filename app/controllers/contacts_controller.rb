@@ -2,7 +2,7 @@ class ContactsController < ApplicationController
     before_action :authenticate_user!, only: [:show, :create, :destroy, :update]
 
     def index
-        @contacts = Contact.all
+        @contacts = current_user.contacts
         render json: @contacts
     end
 
