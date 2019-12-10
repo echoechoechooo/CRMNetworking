@@ -52,6 +52,7 @@ getCurrentContact = () => {
             form["email_address"] = contact.email_address
             form["phone_number"] = contact.phone_number
             form["notes"] = contact.notes
+
             Object.keys(form).map(key => {
                 if(form[key] == null){
                     form[key] = ""

@@ -1,4 +1,5 @@
 import React from "react"
+import "./MainApp.css"
 import {
   BrowserRouter as Router,
   Route,
@@ -118,9 +119,6 @@ export default class MainApp extends React.Component {
                     <div className="collapse navbar-collapse" id="navbarColor02">
                         <ul className="navbar-nav mr-auto">
                             <NavItem className = "nav-item">
-                              <NavLink href={logged_in ? sign_out_route:sign_in_route}>{logged_in ? "Sign Out" : "Sign In"}</NavLink>
-                            </NavItem>
-                            <NavItem className = "nav-item">
                                 <Link to="/" className = "nav-link">Dashboard</Link>
                             </NavItem>
                             <NavItem className = "nav-item">
@@ -134,6 +132,9 @@ export default class MainApp extends React.Component {
                             </NavItem>
                             <NavItem className = "nav-item">
                                 <Link to="/articles" className = "nav-link">Articles</Link>
+                            </NavItem>
+                            <NavItem className = "nav-item">
+                              <NavLink href={logged_in ? sign_out_route:sign_in_route}>{logged_in ? "Sign Out" : "Sign In"}</NavLink>
                             </NavItem>
                         </ul>
                     </div>

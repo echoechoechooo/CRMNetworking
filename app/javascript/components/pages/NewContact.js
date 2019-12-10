@@ -1,20 +1,22 @@
 import React from "react"
 import {Redirect} from "react-router-dom"
 import {
-    Nav,
-    NavItem,
-    NavLink,
-    Container,
-    Row,
-    Col,
-    Button,
-    Form,
-    FormGroup,
-    Label,
-    Input,
-    ListGroup,
-    ListGroupItem
-   } from 'reactstrap'
+      Nav,
+      NavItem,
+      NavLink,
+      Container,
+      Row,
+      Col,
+      Button,
+      Form,
+      FormGroup,
+      Label,
+      Input,
+      ListGroup,
+      ListGroupItem
+     } from 'reactstrap'
+
+
 
 export default class NewContact extends React.Component {
     constructor(props){

@@ -45,13 +45,21 @@ export default class ShowContact extends React.Component {
             );
         }
         return (
-            <div>
-                <h1>{currentContact.id}</h1>
+            <div className="singlecontact">
+
+                <h1>{currentContact.first_name} {currentContact.last_name}</h1>
+                {currentContact.location}
+                <br />
+                {currentContact.industry}
+                <br />
+                {currentContact.email_address}
+                <br />
+                {currentContact.phone_number}
                 {currentUser != currentContact.user_id ? null :
-                <div>
+                <div className="buttons">
                     {deleteSuccess ? <Redirect to="/" />: null}
-                    <Link to={`/contacts/${currentContact.id}/edit`}>Edit</Link>
-                    <button onClick = {this.localDelete}>Delete</button>
+                    <Link to={`/contacts/${currentContact.id}/edit`}><button type="button" class="btn btn-outline-primary" style = {{margin: "10px", width: "100px"}}>Edit</button></Link>
+                    <button type="button" class="btn btn-outline-primary" onClick = {this.localDelete} style = {{margin: "10px", width: "100px"}}>Delete</button>
                 </div>
                 }
             </div>
