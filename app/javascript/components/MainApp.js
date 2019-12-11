@@ -22,8 +22,12 @@ import logo from "./logo.svg"
 import Background from "./background.jpg"
 let endPointArray =["contacts", "todos"]
 
-const firstSpacing = {
-    "firstSpacing": "10%"
+const firstWidth = {
+    "--firstWidth": "5%"
+}
+
+const sideWidth = {
+    "--sideWidth": "20%"
 }
 
 export default class MainApp extends React.Component {
@@ -32,8 +36,7 @@ export default class MainApp extends React.Component {
         this.state ={
             contacts: [],
             todos: [],
-            width: 0,
-            height: 0
+            width: 0
         }
     }
     componentDidMount (){
@@ -50,14 +53,20 @@ export default class MainApp extends React.Component {
 
     updateWindowDimensions = () => {
         let winWidth = window.innerWidth
-        let winHeight = window.innerHeight
-        let nuFirst = winWidth > 1000 ? 10: winWidth < 750 ? 10: 10 - (1000 - winWidth) * 2
-        Object.keys(firstSpacing).map(key => {
-            firstSpacing[key] = `${nuFirst}%`
-            document.documentElement.style.setProperty(key, firstSpacing[key])
+        let nuFirst = winWidth > 1250 ? 5: winWidth < 1000 ? 10: 5 - 0.1 * (1250 - winWidth)/10
+        let nuSide = 20 + 5 - nuFirst
+        Object.keys(firstWidth).map(key => {
+            firstWidth[key] = `${nuFirst}%`
+            const value = firstWidth[key]
+            document.documentElement.style.setProperty(key, value)
+        })
+        Object.keys(sideWidth).map(key => {
+            sideWidth[key] = `${nuSide}%`
+            const value = sideWidth[key]
+            document.documentElement.style.setProperty(key, value)
         })
 
-        this.setState({width: winWidth, height: winHeight})
+        this.setState({width: winWidth})
     }
 
     fetchIt = (input) => {

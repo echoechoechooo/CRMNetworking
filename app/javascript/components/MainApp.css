@@ -7,6 +7,33 @@
   --color-4: #0E0426;
   --color-5: #1f1077;
   --color-6: #FF6E86;
+  --firstWidth: 5%;
+  --sideWidth: 20%
+}
+
+html,
+body {
+  height: 100% !important;
+  overflow: auto !important;
+  overflow-x: hidden;
+  margin:0
+}
+
+body:before {
+  content: "";
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  background-size: cover;
+  background-image: url("background.jpg");
 }
 
 .singlecontact {
@@ -52,9 +79,11 @@
 .contactTable{
   position: absolute;
   background: var(--color-4);
-  border-radius: 10%;
   width: inherit;
   height: inherit;
+  border: 1px solid white;
+  border-radius: 5%;
+  border-collapse: unset;
 }
 
 .contactTable tbody{
@@ -88,16 +117,40 @@
   top: 100px
 }
 
-.contactWidget{
-  width: 20%
+.widgetParent3{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width:100vw;
+  position: relative;
+  top: 200px
 }
 
-.calenderWidget{
-  width: 35%;
+.calendarParent{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  /* width:100vw; */
+  position: relative;
+  width: 45%;
 }
 
-.todoWidget{
-  width: 20%
+.sideWidget{
+  width: var(--sideWidth)
+}
+
+.calendarWidget{
+  width: 65%;
+}
+
+.calendarSpacing{
+  width: 2.5%
+}
+
+.sideCalendarWidget{
+  width: 32.5%
 }
 
 .articlesWidget{
@@ -105,7 +158,7 @@
 }
 
 .firstSpacing{
-  width: 10%
+  width: var(--firstWidth)
 }
 
 .endSpacing{
@@ -120,46 +173,21 @@
   height: 300px
 }
 
-html,
-body {
-  height: 100% !important;
-  overflow: auto !important;
-  overflow-x: hidden;
-  margin:0
-}
-
-body:before {
-  content: "";
-  position: fixed;
-  display: block;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  background-color: black;
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-attachment: fixed;
-  background-size: cover;
-  background-image: url("background.jpg");
-}
-
-@media only screen and (max-width: 750px){
-  .contactWidget{
+@media only screen and (max-width: 1000px){
+  .sideWidget{
     width: 40%
   }
-  
-  .calenderWidget{
-    width: 80%;
+
+  .firstSpacing{
+    width: 10%
   }
   
-  .todoWidget{
-    width: 40%
+  .calendarParent{
+    width: 90%;
   }
   
   .articlesWidget{
-    width: 80%
+    width: 90%
   }
   
   .endSpacing{
@@ -167,6 +195,6 @@ body:before {
   }
   
   .endSpacing2{
-    width: 10%
+    width: 5%
   }
 }

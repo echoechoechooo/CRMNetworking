@@ -3,18 +3,46 @@ import Sidebar from "react-sidebar";
 import {Link} from "react-router-dom";
 import { Table } from 'reactstrap'
 import "../../fonts.css"
-
-
+import Calendar from 'react-calendar';
 import addButton from "../../images/plusButton.png"
+import "../CalendarAlt.css"
+import "../Table.css"
+
 
 export default class Dashboard extends React.Component {
-
+    state = {
+      date: new Date(),
+    }
+    onChange = date => this.setState({ date })
     getColor = (isNull) => {
       if(isNull){
         return "transparent"
       }
       return "white"
     }
+
+    getCalender = () => {
+      return(
+      <div className = "calendarParent">
+        <div className = "widget calendarWidget">
+          <Calendar onChange={this.onChange} value={this.state.date} className = "calendarBackground" tileClassName = "calendarDays"/>
+        </div>
+        <div className = "calendarSpacing widget"></div>
+        <div className = "sideCalendarWidget widget">
+          <table className="contactTable table-hover">
+            <thead>
+              <tr>
+                <th className = "headerFont tableTitle" scope="col"> {this.state.date.toLocaleDateString()}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table> 
+        </div>
+      </div>)
+    }
+
     render () {
         const{contacts, todos, width} = this.props
         let contactList =  contacts.map(contact => {
@@ -42,11 +70,11 @@ export default class Dashboard extends React.Component {
 
               <div className = "endSpacing widget"/>
 
-              <div className = "contactWidget widget">
+              <div className = "sideWidget widget">
                 <table className="contactTable table-hover">
                   <thead>
                     <tr>
-                      <th className = "headerFont" scope="col" style = {{fontSize: "24px", padding: "10px 0px 10px 0px", color:"white"}}>Contacts<Link to = {"/newcontact"} style={{padding: "0px 0px 0px 10px", float: "right"}}><img src = {addButton} style = {{width: "24px", height: "24px", verticalAlign: "inherit", textAlign: "right"}} /></Link></th>
+                      <th className = "headerFont tableTitle" scope="col">Contacts<Link to = {"/newcontact"} style={{padding: "0px 0px 0px 10px", float: "right"}}><img src = {addButton} style = {{width: "24px", height: "24px", verticalAlign: "inherit", textAlign: "right"}} /></Link></th>
                     </tr>
                   </thead>
                   <tbody className="sidebar">
@@ -54,26 +82,14 @@ export default class Dashboard extends React.Component {
                   </tbody>
                 </table>
               </div>
-              {width <= 750 ? null : <div className = "firstSpacing widget"/>}
-              {width <= 750 ? null : 
-              <div className = "calenderWidget widget">
-                <table className="contactTable table-hover">
-                  <thead>
-                    <tr>
-                      <th className = "headerFont" scope="col" style = {{fontSize: "24px", padding: "10px 0px 10px 0px", color:"white"}}>Contacts<Link to = {"/newcontact"} style={{padding: "0px 0px 0px 10px", float: "right"}}><img src = {addButton} style = {{width: "24px", height: "24px", verticalAlign: "inherit", textAlign: "right"}} /></Link></th>
-                    </tr>
-                  </thead>
-                  <tbody className="sidebar">
-                    {contactList}
-                  </tbody>
-                </table>
-              </div>}
+              {width <= 1000 ? null : <div className = "firstSpacing widget"/>}
+              {width <= 1000 ? null : this.getCalender()}
               <div className = "firstSpacing widget"/>
-              <div className = "todoWidget widget">
+              <div className = "sideWidget widget">
                 <table className="contactTable table-hover">
                   <thead>
                     <tr>
-                      <th className = "headerFont" scope="col" style = {{fontSize: "24px", padding: "10px 0px 10px 0px", color:"white"}}>Todos<Link to = {"/newtodo"} style={{padding: "0px 0px 0px 10px", float: "right"}}><img src = {addButton} style = {{width: "24px", height: "24px", verticalAlign: "inherit", textAlign: "right"}} /></Link></th>
+                      <th className = "headerFont tableTitle" scope="col">Todos<Link to = {"/newtodo"} style={{padding: "0px 0px 0px 10px", float: "right"}}><img src = {addButton} style = {{width: "24px", height: "24px", verticalAlign: "inherit", textAlign: "right"}} /></Link></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -83,60 +99,27 @@ export default class Dashboard extends React.Component {
               </div>
               <div className = "endSpacing widget"/>
 
-              {width > 750 ? null: <div className = "widgetParent2">
+              {width > 1000 ? null: <div className = "widgetParent2">
                 <div className = "endSpacing widget"/>
-                <div className = "calenderWidget widget">
-                  <table className="contactTable table-hover">
-                    <thead>
-                      <tr>
-                        <th className = "headerFont" scope="col" style = {{fontSize: "24px", padding: "10px 0px 10px 0px", color:"white"}}>Contacts<Link to = {"/newcontact"} style={{padding: "0px 0px 0px 10px", float: "right"}}><img src = {addButton} style = {{width: "24px", height: "24px", verticalAlign: "inherit", textAlign: "right"}} /></Link></th>
-                      </tr>
-                    </thead>
-                    <tbody className="sidebar">
-                      {contactList}
-                    </tbody>
-                  </table>
-                </div>
+                {this.getCalender()}
               <div className = "endSpacing widget" />
-            </div>
-              }
-              <div className = "widgetParent2">
+            </div>}
+              <div className = {width > 1000 ? "widgetParent2" : "widgetParent3"}>
                 <div className = "endSpacing widget"/>
                 <div className = "articlesWidget widget">
                   <table className="contactTable table-hover">
                     <thead>
                       <tr>
-                        <th className = "headerFont" scope="col" style = {{fontSize: "24px", padding: "10px 0px 10px 0px", color:"white"}}>Contacts<Link to = {"/newcontact"} style={{padding: "0px 0px 0px 10px", float: "right"}}><img src = {addButton} style = {{width: "24px", height: "24px", verticalAlign: "inherit", textAlign: "right"}} /></Link></th>
+                        <th className = "headerFont tableTitle" scope="col">Articles<Link to = {"/"} style={{padding: "0px 0px 0px 10px", float: "right"}}></Link></th>
                       </tr>
                     </thead>
                     <tbody className="sidebar">
-                      {contactList}
                     </tbody>
                   </table>
                 </div>
               <div className = "endSpacing widget" />
             </div>
             </div>
-            {true ? null:
-            <Sidebar
-            children={<div></div>}
-            sidebar={
-                <table className="table table-hover" style = {{width: "15vw"}}>
-                  <thead>
-                    <tr>
-                      <th scope="col" style = {{fontSize: "24px", padding: "10px 0px 10px 0px"}}>Todos<Link to = {"/newcontact"} style={{padding: "0px 0px 0px 10px", float: "right"}}><img src = {addButton} style = {{width: "24px", height: "24px", verticalAlign: "inherit", textAlign: "right"}} /></Link></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {todoList}
-                  </tbody>
-                </table> }
-            docked = {true}
-            transitions = {false}
-            styles={{ sidebar: { top: "90px", background: "white"}, overlay: { backgroundColor:'clear', zIndex: -10 }, root: {left: "85vw"} }}
-            >
-            </Sidebar>
-    }
           </div>
         );
     }
