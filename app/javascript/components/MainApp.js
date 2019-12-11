@@ -27,7 +27,8 @@ export default class MainApp extends React.Component {
         super(props)
         this.state ={
             contacts: [],
-            todos: []
+            todos: [],
+            githubMembers: []
         }
     }
     componentDidMount (){
@@ -50,6 +51,7 @@ export default class MainApp extends React.Component {
                     break
             }
         })
+    
     }
 
     add = (attrs, type) => {
