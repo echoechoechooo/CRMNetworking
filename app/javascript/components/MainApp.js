@@ -36,7 +36,8 @@ export default class MainApp extends React.Component {
         this.state ={
             contacts: [],
             todos: [],
-            width: 0
+            width: 0,
+            githubMembers: []
         }
     }
     componentDidMount (){
