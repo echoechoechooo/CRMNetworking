@@ -23,7 +23,7 @@ module NetworkingCrm
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-    config.hosts << "cryptic-forest-67187.herokuapp.com"
+    config.hosts << "echo-net.herokuapp.com"
     config.hosts << "4519d5e5dcd14f16a10b95a770ebd2e8.vfs.cloud9.us-east-2.amazonaws.com"
     config.hosts << "7856ddd94aa94400b519209321e5897c.vfs.cloud9.us-east-2.amazonaws.com"
 

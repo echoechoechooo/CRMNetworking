@@ -50,7 +50,7 @@ Today, Echo Net has been deployed, and the team is continuing to add features th
 
 The app is deployed and available at the following URL:
 
-[https://cryptic-forest-67187.herokuapp.com/](https://cryptic-forest-67187.herokuapp.com/)
+[https://echo-net.herokuapp.com/](https://echo-net.herokuapp.com/)
 
 ## 6. Screenshots
 
