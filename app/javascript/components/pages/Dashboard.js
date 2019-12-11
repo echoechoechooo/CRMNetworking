@@ -13,16 +13,16 @@ export default class Dashboard extends React.Component {
       if(isNull){
         return "transparent"
       }
-      return "black"
+      return "white"
     }
     render () {
-        const{contacts, todos} = this.props
+        const{contacts, todos, width} = this.props
         let contactList =  contacts.map(contact => {
             return (
                 <tr key = {contact.id} className="table-active">
                     <td style={{padding: "0px 0px 0px 0px"}}>
                         <Link to = {`/contacts/${contact.id}`} style={{fontSize: "20px", padding: "0px 0px 0px 10px", color: "white"}}>{contact.first_name} {contact.last_name}</Link>
-                        <h3 style={{fontSize: "12px", padding: "0px 0px 0px 10px", color: "white"}}>{contact.industry}</h3>
+                        <h3 style={{fontSize: "12px", padding: "0px 0px 0px 10px", color: "white"}}>{contact.industry != null & contact.industry != "" ? contact.industry: `Connect with ${contact.first_name}!`}</h3>
                     </td>
                 </tr>)
         })
@@ -30,7 +30,7 @@ export default class Dashboard extends React.Component {
           return (
             <tr key = {todo.id} className="table-active">
                 <td style={{padding: "0px 0px 0px 0px"}}>
-                    <Link to = {`/todos/${todo.id}/edit`} style={{fontSize: "20px", padding: "0px 0px 0px 10px", fontFamily: 'houseonmars'}}>{todo.title}</Link>
+                    <Link to = {`/todos/${todo.id}/edit`} style={{fontSize: "20px", padding: "0px 0px 0px 10px", color: 'white'}}>{todo.title}</Link>
                     <h3 style={{fontSize: "12px", padding: "0px 0px 0px 10px", "color": (this.getColor(todo.due_date === null))}}>{new Date(todo.due_date).toLocaleDateString()} {new Date(todo.due_date).toLocaleString([], {hour: '2-digit', minute:'2-digit'})}</h3>
                 </td>
             </tr>)
@@ -38,25 +38,86 @@ export default class Dashboard extends React.Component {
 
         return (
           <div>
-            <Sidebar
-            children={<div></div>}
-            sidebar={
-                <table className="table table-hover" style = {{width: "15vw"}}>
+            <div className = "widgetParent">
+
+              <div className = "endSpacing widget"/>
+
+              <div className = "contactWidget widget">
+                <table className="contactTable table-hover">
                   <thead>
                     <tr>
-                      <th scope="col" style = {{fontSize: "24px", padding: "10px 0px 10px 0px", color:"white"}}>Contacts<Link to = {"/newcontact"} style={{padding: "0px 0px 0px 10px", float: "right"}}><img src = {addButton} style = {{width: "24px", height: "24px", verticalAlign: "inherit", textAlign: "right"}} /></Link></th>
+                      <th className = "headerFont" scope="col" style = {{fontSize: "24px", padding: "10px 0px 10px 0px", color:"white"}}>Contacts<Link to = {"/newcontact"} style={{padding: "0px 0px 0px 10px", float: "right"}}><img src = {addButton} style = {{width: "24px", height: "24px", verticalAlign: "inherit", textAlign: "right"}} /></Link></th>
                     </tr>
                   </thead>
                   <tbody className="sidebar">
                     {contactList}
                   </tbody>
-                </table> }
-            docked = {true}
-            transitions = {false}
-            styles={{ sidebar: { top: "90px", background: "#410082"}, overlay: { backgroundColor:'clear', zIndex: -10 } }}
-            >
-            </Sidebar>
+                </table>
+              </div>
+              {width <= 750 ? null : <div className = "firstSpacing widget"/>}
+              {width <= 750 ? null : 
+              <div className = "calenderWidget widget">
+                <table className="contactTable table-hover">
+                  <thead>
+                    <tr>
+                      <th className = "headerFont" scope="col" style = {{fontSize: "24px", padding: "10px 0px 10px 0px", color:"white"}}>Contacts<Link to = {"/newcontact"} style={{padding: "0px 0px 0px 10px", float: "right"}}><img src = {addButton} style = {{width: "24px", height: "24px", verticalAlign: "inherit", textAlign: "right"}} /></Link></th>
+                    </tr>
+                  </thead>
+                  <tbody className="sidebar">
+                    {contactList}
+                  </tbody>
+                </table>
+              </div>}
+              <div className = "firstSpacing widget"/>
+              <div className = "todoWidget widget">
+                <table className="contactTable table-hover">
+                  <thead>
+                    <tr>
+                      <th className = "headerFont" scope="col" style = {{fontSize: "24px", padding: "10px 0px 10px 0px", color:"white"}}>Todos<Link to = {"/newtodo"} style={{padding: "0px 0px 0px 10px", float: "right"}}><img src = {addButton} style = {{width: "24px", height: "24px", verticalAlign: "inherit", textAlign: "right"}} /></Link></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {todoList}
+                  </tbody>
+                </table> 
+              </div>
+              <div className = "endSpacing widget"/>
 
+              {width > 750 ? null: <div className = "widgetParent2">
+                <div className = "endSpacing widget"/>
+                <div className = "calenderWidget widget">
+                  <table className="contactTable table-hover">
+                    <thead>
+                      <tr>
+                        <th className = "headerFont" scope="col" style = {{fontSize: "24px", padding: "10px 0px 10px 0px", color:"white"}}>Contacts<Link to = {"/newcontact"} style={{padding: "0px 0px 0px 10px", float: "right"}}><img src = {addButton} style = {{width: "24px", height: "24px", verticalAlign: "inherit", textAlign: "right"}} /></Link></th>
+                      </tr>
+                    </thead>
+                    <tbody className="sidebar">
+                      {contactList}
+                    </tbody>
+                  </table>
+                </div>
+              <div className = "endSpacing widget" />
+            </div>
+              }
+              <div className = "widgetParent2">
+                <div className = "endSpacing widget"/>
+                <div className = "articlesWidget widget">
+                  <table className="contactTable table-hover">
+                    <thead>
+                      <tr>
+                        <th className = "headerFont" scope="col" style = {{fontSize: "24px", padding: "10px 0px 10px 0px", color:"white"}}>Contacts<Link to = {"/newcontact"} style={{padding: "0px 0px 0px 10px", float: "right"}}><img src = {addButton} style = {{width: "24px", height: "24px", verticalAlign: "inherit", textAlign: "right"}} /></Link></th>
+                      </tr>
+                    </thead>
+                    <tbody className="sidebar">
+                      {contactList}
+                    </tbody>
+                  </table>
+                </div>
+              <div className = "endSpacing widget" />
+            </div>
+            </div>
+            {true ? null:
             <Sidebar
             children={<div></div>}
             sidebar={
@@ -75,35 +136,27 @@ export default class Dashboard extends React.Component {
             styles={{ sidebar: { top: "90px", background: "white"}, overlay: { backgroundColor:'clear', zIndex: -10 }, root: {left: "85vw"} }}
             >
             </Sidebar>
+    }
           </div>
         );
     }
 }
 
-// <tr onClick = {this.clickIt}>
-//     <th scope="row">Default</th>
-// </tr>
-// <tr className="table-primary">
-//   <th scope="row">Primary</th>
-// </tr>
-// <tr className="table-secondary">
-//   <th scope="row">Secondary</th>
-// </tr>
-// <tr className="table-success">
-//   <th scope="row">Success</th>
-// </tr>
-// <tr className="table-danger">
-//   <th scope="row">Danger</th>
-// </tr>
-// <tr className="table-warning">
-//   <th scope="row">Warning</th>
-// </tr>
-// <tr className="table-info">
-//   <th scope="row">Info</th>
-// </tr>
-// <tr className="table-light">
-//   <th scope="row">Light</th>
-// </tr>
-// <tr className="table-dark">
-//   <th scope="row">Dark</th>
-// </tr>
+{/* <Sidebar
+            children={<div></div>}
+            sidebar={
+                <table className="table table-hover" style = {{width: "15vw"}}>
+                  <thead>
+                    <tr>
+                      <th className = "headerFont" scope="col" style = {{fontSize: "24px", padding: "10px 0px 10px 0px", color:"white"}}>Contacts<Link to = {"/newcontact"} style={{padding: "0px 0px 0px 10px", float: "right"}}><img src = {addButton} style = {{width: "24px", height: "24px", verticalAlign: "inherit", textAlign: "right"}} /></Link></th>
+                    </tr>
+                  </thead>
+                  <tbody className="sidebar">
+                    {contactList}
+                  </tbody>
+                </table> }
+            docked = {true}
+            transitions = {false}
+            styles={{ sidebar: { top: "90px", background: "#0E0422"}, overlay: { backgroundColor:'clear', zIndex: -10 } }}
+            >
+            </Sidebar> */}

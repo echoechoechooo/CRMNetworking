@@ -22,18 +22,42 @@ import logo from "./logo.svg"
 import Background from "./background.jpg"
 let endPointArray =["contacts", "todos"]
 
+const firstSpacing = {
+    "firstSpacing": "10%"
+}
+
 export default class MainApp extends React.Component {
     constructor(props){
         super(props)
         this.state ={
             contacts: [],
-            todos: []
+            todos: [],
+            width: 0,
+            height: 0
         }
     }
     componentDidMount (){
         for(let i = 0; i < endPointArray.length; i++){
             this.fetchIt(endPointArray[i])
         }
+        window.addEventListener('resize', this.updateWindowDimensions)
+        this.updateWindowDimensions()
+    }
+
+    componentWillUnmount(){
+        window.removeEventListener('resize', this.updateWindowDimensions)
+    }
+
+    updateWindowDimensions = () => {
+        let winWidth = window.innerWidth
+        let winHeight = window.innerHeight
+        let nuFirst = winWidth > 1000 ? 10: winWidth < 750 ? 10: 10 - (1000 - winWidth) * 2
+        Object.keys(firstSpacing).map(key => {
+            firstSpacing[key] = `${nuFirst}%`
+            document.documentElement.style.setProperty(key, firstSpacing[key])
+        })
+
+        this.setState({width: winWidth, height: winHeight})
     }
 
     fetchIt = (input) => {
@@ -106,14 +130,14 @@ export default class MainApp extends React.Component {
 
   render () {
     const { logged_in,sign_in_route, sign_out_route, current_user_id } = this.props
-    const {contacts, todos} = this.state
+    const {contacts, todos, height, width} = this.state
     return (
-        <React.Fragment>
+        <div>
             <Router>
                 <Switch>
-                    <Route exact path="/" render = {()=><Dashboard contacts = {contacts} todos = {todos} />} />
+                    <Route exact path="/" render = {()=><Dashboard contacts = {contacts} todos = {todos} width = {width}/>} />
                 </Switch>
-                <Nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor: "#410082"}}>
+                <Nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor: "#0E0426"}}>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -122,22 +146,22 @@ export default class MainApp extends React.Component {
                         <ul className="navbar-nav mr-auto">
                             <img src ={logo} />
                             <NavItem className = "nav-item">
-                                <Link to="/" className = "nav-link">Dashboard</Link>
+                                <Link to="/" className = "nav-link headerFont">Dashboard</Link>
                             </NavItem>
                             <NavItem className = "nav-item">
-                                <Link to="/contacts" className = "nav-link">Contacts</Link>
+                                <Link to="/contacts" className = "nav-link headerFont">Contacts</Link>
                             </NavItem>
                             <NavItem className = "nav-item">
-                                <Link to="/todos" className = "nav-link">Todos</Link>
+                                <Link to="/todos" className = "nav-link headerFont">Todos</Link>
                             </NavItem>
                             <NavItem className = "nav-item">
-                                <Link to="/calendar" className = "nav-link">Calendar</Link>
+                                <Link to="/calendar" className = "nav-link headerFont">Calendar</Link>
                             </NavItem>
                             <NavItem className = "nav-item">
-                                <Link to="/articles" className = "nav-link">Articles</Link>
+                                <Link to="/articles" className = "nav-link headerFont">Articles</Link>
                             </NavItem>
                             <NavItem className = "nav-item">
-                              <NavLink href={logged_in ? sign_out_route:sign_in_route}>{logged_in ? "Sign Out" : "Sign In"}</NavLink>
+                              <NavLink className = "headerFont" href={logged_in ? sign_out_route:sign_in_route}>{logged_in ? "Sign Out" : "Sign In"}</NavLink>
                             </NavItem>
                         </ul>
                     </div>
@@ -154,7 +178,7 @@ export default class MainApp extends React.Component {
                     <Route exact path="/articles" render = {()=><Articles/>} />
                 </Switch>
             </Router>
-        </React.Fragment>
+        </div>
     );
   }
 }

@@ -58,8 +58,8 @@ export default class ShowContact extends React.Component {
                 {currentUser != currentContact.user_id ? null :
                 <div className="buttons">
                     {deleteSuccess ? <Redirect to="/" />: null}
-                    <Link to={`/contacts/${currentContact.id}/edit`}><button type="button" class="btn btn-outline-primary" style = {{margin: "10px", width: "100px"}}>Edit</button></Link>
-                    <button type="button" class="btn btn-outline-primary" onClick = {this.localDelete} style = {{margin: "10px", width: "100px"}}>Delete</button>
+                    <Link to={`/contacts/${currentContact.id}/edit`}><button type="button" className="btn btn-outline-primary" style = {{margin: "10px", width: "100px"}}>Edit</button></Link>
+                    <button type="button" className="btn btn-outline-primary" onClick = {this.localDelete} style = {{margin: "10px", width: "100px"}}>Delete</button>
                 </div>
                 }
             </div>

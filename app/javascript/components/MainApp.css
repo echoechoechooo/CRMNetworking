@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
+:root{
+  --color-1: #ED497B;
+  --color-2: #591481;
+  --color-3: #361077;
+  --color-4: #0E0426;
+  --color-5: #1f1077;
+  --color-6: #FF6E86;
+}
+
 .singlecontact {
   text-align: center;
   padding-top: 50px;
@@ -21,13 +30,12 @@
 }
 
 .sidebar {
-  font-family: 'house_on_marsregular';
   text-decoration-color: #ffffff;
   color: white;
 }
 
 @font-face {
-    font-family: 'house_on_marsregular';
+    font-family: 'houseonmars';
     src: url('house_on_mars-webfont.woff2') format('woff2'),
          url('house_on_mars-webfont.woff') format('woff');
     font-weight: normal;
@@ -35,6 +43,130 @@
 
 }
 
-.html {
+.headerFont{
+  font-family: 'houseonmars';
+  font-size: 24px;
+  white-space: nowrap;
+}
+
+.contactTable{
+  position: absolute;
+  background: var(--color-4);
+  border-radius: 10%;
+  width: inherit;
+  height: inherit;
+}
+
+.contactTable tbody{
+  display:block;
+  overflow:auto;
+  height:200px;
+  width:100%;
+}
+
+.contactTable tr{
+  display:block;
+}
+
+.widgetParent{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width:100vw;
+  position: absolute;
+  top: 150px
+}
+
+.widgetParent2{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width:100vw;
+  position: relative;
+  top: 100px
+}
+
+.contactWidget{
+  width: 20%
+}
+
+.calenderWidget{
+  width: 35%;
+}
+
+.todoWidget{
+  width: 20%
+}
+
+.articlesWidget{
+  width: 70%
+}
+
+.firstSpacing{
+  width: 10%
+}
+
+.endSpacing{
+  width:2.5%
+}
+
+.endSpacing2{
+  width: 15%
+}
+
+.widget{
+  height: 300px
+}
+
+html,
+body {
+  height: 100% !important;
+  overflow: auto !important;
+  overflow-x: hidden;
+  margin:0
+}
+
+body:before {
+  content: "";
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  background-size: cover;
   background-image: url("background.jpg");
+}
+
+@media only screen and (max-width: 750px){
+  .contactWidget{
+    width: 40%
+  }
+  
+  .calenderWidget{
+    width: 80%;
+  }
+  
+  .todoWidget{
+    width: 40%
+  }
+  
+  .articlesWidget{
+    width: 80%
+  }
+  
+  .endSpacing{
+    width: 5%
+  }
+  
+  .endSpacing2{
+    width: 10%
+  }
 }
