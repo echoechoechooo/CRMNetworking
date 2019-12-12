@@ -1,6 +1,22 @@
-<div>
-<img src="/logo.svg" />
-<h2>Log in</h2>
+<div style="background-image: url('./background.jpg');  
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  background-size: cover;"
+>
+<img src="/logo.svg" style="height:50px; margin-left: 200px; margin-top:25px;"/>
+<div style="text-align:center; margin-top:50px; margin-left">
+
+<div style="margin-top:50px">
+<h1 style="
+color:white; 
+font-family: 'houseonmars';
+src: url('house_on_mars-webfont.woff2') format('woff2'),
+url('house_on_mars-webfont.woff') format('woff');
+font-style: normal;
+font-weight: normal;
+text-shadow: 2px 2px 5px #42f5e6;"
+>Log in</h1>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -30,7 +46,42 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
 
-<h1>about the project</h1>
-<h1>team bio stuff down here</h1>
+    <div style="margin-top:50px;">
+      <h1 style="
+        color:white; 
+        font-family: 'houseonmars';
+        src: url('house_on_mars-webfont.woff2') format('woff2'),
+        url('house_on_mars-webfont.woff') format('woff');
+        font-style: normal;
+        font-weight: normal;
+        text-shadow: 2px 2px 5px #42f5e6;
+      ">About the Project</h1>
+    </div>
+    <div style="text-align:left; width:1000px; margin:auto; margin-top:35px; margin-bottom:50px; text-align: justify;
+    text-justify: inter-word; color:white; font-size:18px;">
+      <p>Tired of echoing into a void trying to connect with all the wonderful people you have met on your tech journey? Us too. Here at Echo Net we give you the tools to help you build out and track your technical professional network to build out meaningful interactions with your contacts.</p>
+
+      <p>Echo Net began in December of 2019 as a capstone project for a three-month long Web Developer bootcamp in downtown San Diego. It has since grown from a idea formed during a brainstorm into a complete project, and we look forward to how Echo Net will continue to grow in the future.</p>
+      
+      <p>Today, Echo Net has been deployed, and the team is continuing to add features that will increase the social integrations and workflows with an eye for automation.</p>
+    </div>
+  <div>
+    <h1 style=
+      "color:white; 
+      font-family: 'houseonmars';
+      src: url('house_on_mars-webfont.woff2') format('woff2'),
+      url('house_on_mars-webfont.woff') format('woff');
+      font-style: normal;
+      font-weight: normal;
+      text-shadow: 2px 2px 5px #42f5e6;"
+    >Team Bio</h2>
+    <img src="./pug.jpg" style="max-width:400px; margin-right:50px; margin-bottom:50px" />
+    <img src="./pug.jpg" style="max-width:400px;margin-bottom:50px" />
+    <br />
+    <img src="./pug.jpg" style="max-width:400px; margin-right:50px" />
+    <img src="./pug.jpg" style="max-width:400px;" />
+  </div>
+</div>
 </div>
