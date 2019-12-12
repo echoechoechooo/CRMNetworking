@@ -60,7 +60,7 @@ export default class NewContact extends React.Component {
         const{first_name, last_name, location, industry, email_address, phone_number} = form
         return (
             <React.Fragment>
-                {createSucess ? <Redirect to="/dashboard" />: null}
+                {createSucess ? <Redirect to="/" />: null}
                 <form className="form-contact">
                   <fieldset>
     

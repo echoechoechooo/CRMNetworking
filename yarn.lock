@@ -5263,7 +5263,7 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-calendar@^2.19.1:
+react-calendar@^2.19.1, react-calendar@^2.19.2:
   version "2.19.2"
   resolved "https://registry.yarnpkg.com/react-calendar/-/react-calendar-2.19.2.tgz#496e78eb11a00aee1ae6b5d02d221ed1ca2db952"
   dependencies:
