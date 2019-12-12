@@ -23,7 +23,7 @@ class ContactsController < ApplicationController
 
     def update
         @contact = current_user.contacts.find params[:id]
-        @contact.update_attributes(contact_params)
+        @contact.update(contact_params)
         render json: @contact, status: 201
     end
 
