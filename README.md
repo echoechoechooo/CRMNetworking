@@ -50,8 +50,7 @@ Today, Echo Net has been deployed, and the team is continuing to add features th
 
 The app is deployed and available at the following URL:
 
-<a href="https://echo-net.herokuapp.com" target="_blank">https://echo-net.herokuapp.com/</a>
-[https://echo-net.herokuapp.com/](https://echo-net.herokuapp.com/){:target="_blank"}
+[https://echo-net.herokuapp.com/](https://echo-net.herokuapp.com/)
 
 ## 6. Screenshots
 
