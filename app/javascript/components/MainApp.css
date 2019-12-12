@@ -81,7 +81,7 @@ body:before {
   background: var(--color-4);
   width: inherit;
   height: inherit;
-  border: 1px solid white;
+  border: 2px solid white;
   border-radius: 5%;
   border-collapse: unset;
 }

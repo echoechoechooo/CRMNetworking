@@ -45,18 +45,18 @@ export default class Dashboard extends React.Component {
 
     render () {
         const{contacts, todos, width} = this.props
-        let contactList =  contacts.map(contact => {
+        let contactList =  contacts.map((contact, dex) => {
             return (
-                <tr key = {contact.id} className="table-active">
+                <tr key = {contact.id} className={dex == 0 ? "tableRowTop" : "tableRow"}>
                     <td style={{padding: "0px 0px 0px 0px"}}>
                         <Link to = {`/contacts/${contact.id}`} style={{fontSize: "20px", padding: "0px 0px 0px 10px", color: "white"}}>{contact.first_name} {contact.last_name}</Link>
                         <h3 style={{fontSize: "12px", padding: "0px 0px 0px 10px", color: "white"}}>{contact.industry != null & contact.industry != "" ? contact.industry: `Connect with ${contact.first_name}!`}</h3>
                     </td>
                 </tr>)
         })
-        let todoList = todos.filter(todo => !todo.is_done).map(todo => {
+        let todoList = todos.filter(todo => !todo.is_done).map((todo, dex) => {
           return (
-            <tr key = {todo.id} className="table-active">
+            <tr key = {todo.id} className={dex == 0 ? "tableRowTop" : "tableRow"}>
                 <td style={{padding: "0px 0px 0px 0px"}}>
                     <Link to = {`/todos/${todo.id}/edit`} style={{fontSize: "20px", padding: "0px 0px 0px 10px", color: 'white'}}>{todo.title}</Link>
                     <h3 style={{fontSize: "12px", padding: "0px 0px 0px 10px", "color": (this.getColor(todo.due_date === null))}}>{new Date(todo.due_date).toLocaleDateString()} {new Date(todo.due_date).toLocaleString([], {hour: '2-digit', minute:'2-digit'})}</h3>
@@ -82,9 +82,12 @@ export default class Dashboard extends React.Component {
                   </tbody>
                 </table>
               </div>
+
               {width <= 1000 ? null : <div className = "firstSpacing widget"/>}
               {width <= 1000 ? null : this.getCalender()}
+              
               <div className = "firstSpacing widget"/>
+              
               <div className = "sideWidget widget">
                 <table className="contactTable table-hover">
                   <thead>
@@ -99,11 +102,12 @@ export default class Dashboard extends React.Component {
               </div>
               <div className = "endSpacing widget"/>
 
-              {width > 1000 ? null: <div className = "widgetParent2">
-                <div className = "endSpacing widget"/>
-                {this.getCalender()}
-              <div className = "endSpacing widget" />
-            </div>}
+              {width > 1000 ? null: 
+                <div className = "widgetParent2">
+                  <div className = "endSpacing widget"/>
+                    {this.getCalender()}
+                  <div className = "endSpacing widget" />
+              </div>}
               <div className = {width > 1000 ? "widgetParent2" : "widgetParent3"}>
                 <div className = "endSpacing widget"/>
                 <div className = "articlesWidget widget">
