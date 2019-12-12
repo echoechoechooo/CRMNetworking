@@ -33,7 +33,7 @@ body:before {
   background-position: center top;
   background-attachment: fixed;
   background-size: cover;
-  background-image: url("background.jpg");
+  /* background-image: url("background.jpg"); */
 }
 
 .singlecontact {
