@@ -1,5 +1,4 @@
 import React from "react"
-import "./MainApp.css"
 import {
   BrowserRouter as Router,
   Route,
@@ -19,7 +18,6 @@ import Calendar from "./pages/Calendar"
 import Articles from "./pages/Articles"
 import "bootswatch/dist/lux/bootstrap.min.css"
 import logo from "./logo.svg"
-import Background from "./background.jpg"
 let endPointArray =["contacts", "todos"]
 
 const firstWidth = {
