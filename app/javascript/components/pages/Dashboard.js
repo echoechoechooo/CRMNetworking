@@ -2,11 +2,9 @@ import React from "react"
 import Sidebar from "react-sidebar";
 import {Link} from "react-router-dom";
 import { Table } from 'reactstrap'
-import "../../fonts.css"
 import Calendar from 'react-calendar';
 import addButton from "../../images/plusButton.png"
 import "../CalendarAlt.css"
-import "../Table.css"
 
 
 export default class Dashboard extends React.Component {
@@ -49,7 +47,7 @@ export default class Dashboard extends React.Component {
             return (
                 <tr key = {contact.id} className={dex == 0 ? "tableRowTop" : "tableRow"}>
                     <td style={{padding: "0px 0px 0px 0px"}}>
-                        <Link to = {`/contacts/${contact.id}`} style={{fontSize: "20px", padding: "0px 0px 0px 10px", color: "white"}}>{contact.first_name} {contact.last_name}</Link>
+                        <Link to = {`/contacts/${contact.id}`} style={{fontSize: "20px", padding: "0px 0px 0px 10px", color: "white"}}>{contact.first_name} is {contact.last_name}</Link>
                         <h3 style={{fontSize: "12px", padding: "0px 0px 0px 10px", color: "white"}}>{contact.industry != null & contact.industry != "" ? contact.industry: `Connect with ${contact.first_name}!`}</h3>
                     </td>
                 </tr>)
