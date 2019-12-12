@@ -4,7 +4,7 @@
 1. <a href="#1-purpose">Purpose</a>
 2. <a href="#2-skills-acquired">Skills acquired</a>
 3. <a href="#3-technology">Technology</a>
-4. <a href="#4-features">User Stories</a>
+4. <a href="#4-user-stories">User Stories</a>
 5. <a href="#5-how-to-use">How to use</a>
 6. <a href="#6-screenshots">Screenshots</a>
 7. <a href="#7-credits">Credits</a>
