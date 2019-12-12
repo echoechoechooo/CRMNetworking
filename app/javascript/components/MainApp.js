@@ -84,6 +84,7 @@ export default class MainApp extends React.Component {
                     break
             }
         })
+    
     }
 
     add = (attrs, type) => {
