@@ -34,7 +34,7 @@
 }
 
 .react-calendar{
-  border: 2px solid white;
+  /* border: 2px solid white; */
   border-radius: 5%;
   width: auto;
   max-width: 450px;
