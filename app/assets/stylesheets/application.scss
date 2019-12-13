@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+ /*!
 
 /*!
  * Bootswatch v4.4.1
@@ -33,10 +34,17 @@
 
 @font-face{
     font-family: 'houseonmars';
-    src: url('house_on_mars-webfont.woff2') format('woff2'), 
-    url('house_on_mars-webfont.woff') format('woff');
+    src: asset-url('house_on_mars-webfont.woff2') format('woff2'), 
+    asset-url('house_on_mars-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+}
+
+@font-face {
+  font-family: 'pressstart2p';
+  src: asset-url('pressstart2p-regular-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
 :root{
@@ -72,7 +80,11 @@ body:before {
   background-position: center top;
   background-attachment: fixed;
   background-size: cover;
-  background-image: url("background.jpg");
+  background-image: asset-url("background.jpg");
+}
+
+.tableheaders {
+  font-family: 'pressstart2p', cursive;
 }
 
 .singlecontact {
@@ -81,10 +93,19 @@ body:before {
 }
 
 .form-contact {
-  max-width: 500px;
-  margin-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 50px 50px 50px 50px;
+  max-width: 600px;
+  background-color: #1f1077;
+  margin: 50px 0px 50px 0px;
+}
+
+.form-board {
+  margin: 0 auto;
+  width: 600px;
+}
+
+.inputStyle {
+  width:500px;
 }
 
 .first-row {
@@ -100,10 +121,46 @@ body:before {
   color: white;
 }
 
+.btn-placement {
+  text-align: center;
+}
+
 .headerFont{
   font-family: 'houseonmars';
   font-size: 24px;
   white-space: nowrap;
+}
+
+.glow {
+  text-shadow: 2px 2px 5px #42f5e6;
+}
+
+.edit {
+  width:25px;
+  text-align:center;
+  opacity: .5;
+}
+
+.edit:hover {
+  opacity: 1;
+  margin: 0 auto;
+}
+
+.label-color {
+  color:white;
+}
+
+.headerFont{
+  font-family: 'houseonmars';
+  font-size: 24px;
+  white-space: nowrap;
+}
+
+.headerStyle{
+  color: white;
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 50px;
 }
 
 .contactTable{
@@ -111,11 +168,12 @@ body:before {
   background: var(--color-4);
   width: inherit;
   height: inherit;
-  border: 2px solid white;
+  // border: 2px solid white;
   border-radius: 5%;
   border-collapse: unset;
   overflow-x: auto;
   display: block;
+  box-shadow: 1px -1px 0 black, 3px 2px 3px var(--color-6), -3px -2px 3px var(--color-6), -1px -2px 0 white
 }
 
 .contactTable tbody{
@@ -260,6 +318,7 @@ body:before {
   
   .calendarBackground{
     background: var(--color-4) !important;
+    box-shadow: 1px -1px 0 black, 3px 2px 3px var(--color-6), -3px -2px 3px var(--color-6), -1px -2px 0 white
   }
   
   .react-calendar__month-view__days__day--neighboringMonth {
@@ -279,7 +338,7 @@ body:before {
   }
   
   .react-calendar{
-    border: 2px solid white;
+    // border: 2px solid white;
     border-radius: 5%;
     width: auto;
     max-width: 450px;

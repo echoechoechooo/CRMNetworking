@@ -126,18 +126,6 @@ export default class Dashboard extends React.Component {
                           </div>
                         </div>
                       </div>
-                      <div className="flex-item">
-                        <img className = "articleThumbnail" src = {bird} />
-                        <h1 className = "articleTitle">Bird</h1>
-                      </div>
-                      <div className="flex-item">
-                        <img className = "articleThumbnail" src = {bird} />
-                        <h1 className = "articleTitle">Bird</h1>
-                      </div>
-                      <div className="flex-item">
-                        <img className = "articleThumbnail" src = {bird} />
-                        <h1 className = "articleTitle">Bird</h1>
-                      </div>
                     </div>
                     </tbody>
                   </table>
