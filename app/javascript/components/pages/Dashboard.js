@@ -48,7 +48,7 @@ export default class Dashboard extends React.Component {
                 <tr key = {contact.id} className={dex == 0 ? "tableRowTop" : "tableRow"}>
                     <td style={{padding: "0px 0px 0px 0px"}}>
                         <Link to = {`/contacts/${contact.id}`} style={{fontSize: "20px", padding: "0px 0px 0px 10px", color: "white"}}>{contact.first_name} {contact.last_name}</Link>
-                        <h3 style={{fontSize: "12px", padding: "0px 0px 0px 10px", color: "white"}}>{contact.industry != null & contact.industry != "" ? contact.industry: `Connect with ${contact.first_name}!`}</h3>
+                        <h3 style={{fontSize: "12px", padding: "0px 0px 0px 10px", color: "white"}}>{contact.industry != null & contact.industry != "" ? contact.industry: contact.first_name != null & contact.first_name != "" ? `Connect with ${contact.first_name}!`: `Connect with ${contact.login}!`}</h3>
                     </td>
                 </tr>)
         })
