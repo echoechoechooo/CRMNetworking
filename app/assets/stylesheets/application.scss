@@ -33,8 +33,8 @@
 
 @font-face{
     font-family: 'houseonmars';
-    src: url('house_on_mars-webfont.woff2') format('woff2'), 
-    url('house_on_mars-webfont.woff') format('woff');
+    src: asset-url('house_on_mars-webfont.woff2') format('woff2'), 
+    asset-url('house_on_mars-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -72,7 +72,7 @@ body:before {
   background-position: center top;
   background-attachment: fixed;
   background-size: cover;
-  background-image: url("background.jpg");
+  background-image: asset-url("background.jpg");
 }
 
 .singlecontact {

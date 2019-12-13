@@ -79,14 +79,6 @@ body:before {
   text-align: center;
 }
 
-@font-face {
-    font-family: 'houseonmars';
-    src: url('house_on_mars-webfont.woff2') format('woff2'),
-         url('house_on_mars-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
 
 .glow {
   text-shadow: 2px 2px 5px #42f5e6;
