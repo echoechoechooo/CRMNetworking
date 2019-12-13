@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  */
-@import 'bootstrap';
 @import "bootswatch/dist/lux/bootstrap.min.css";
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
@@ -87,15 +86,6 @@ body:before {
   color: white;
 }
 
-@font-face {
-    font-family: 'houseonmars';
-    src: url('house_on_mars-webfont.woff2') format('woff2'),
-         url('house_on_mars-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
 .headerFont{
   font-family: 'houseonmars';
   font-size: 24px;
@@ -110,6 +100,8 @@ body:before {
   border: 2px solid white;
   border-radius: 5%;
   border-collapse: unset;
+  overflow-x: auto;
+  display: block;
 }
 
 .contactTable tbody{
@@ -285,4 +277,82 @@ body:before {
   
   .react-calendar__tile--active {
     background: #006edc;
+  }
+  
+  /* Inline-block */
+  .inline {
+    vertical-align: middle;
+    overflow-x: scroll; 
+  }
+  .inline-item {
+    display: inline-block;
+    vertical-align: middle;
+    height: 96px;
+    margin-right: -4px;
+  }
+  
+  
+  /* Flex */
+  .flex {
+    display: flex;
+    flex-wrap: nowrap; 
+    overflow: auto;
+    justify-content: left;
+    // margin: 5px;
+    width: 100%;
+    height: 100%;
+    margin-left: 10px;
+    // white-space: nowrap;
+  }
+  .flex-item {
+    flex: 0 0 auto;
+    width: 250px;
+    margin-right: 20px;
+    border: 1px solid white;
+    border-radius: 2%;
+  }
+
+  .articleThumbnail {
+      height: 60%;
+      float: right;
+      border-radius: 3%;
+  }
+
+  .articleTitle{
+    font-family: 'houseonmars';
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    color: white;
+    white-space: normal;
+    height: 60%;
+    margin-bottom: 0px;
+  }
+
+  .tagFlex {
+    display: flex;
+    flex-wrap: nowrap; 
+    overflow: auto;
+    justify-content: left;
+    width: 100%;
+    height: 40%;
+  }
+
+  .flex-tag {
+    flex: 0 0 auto;
+    width: 30%;
+  }
+
+  .tagTitle {
+    font-family: 'houseonmars';
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: white;
+    white-space: normal;
+    text-align: center;
+    margin-bottom: 0px;
+    border: 5px solid var(--color-6);
+    border-radius: 5%;
+    background-color: var(--color-6);
+    margin-top: 20px;
+    margin-left: 10px
   }

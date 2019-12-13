@@ -16,7 +16,6 @@ import NewTodo from "./todos/NewTodo"
 import EditTodo from "./todos/EditTodo"
 import Calendar from "./pages/Calendar"
 import Articles from "./pages/Articles"
-import "bootswatch/dist/lux/bootstrap.min.css"
 import logo from "./logo.svg"
 let endPointArray =["contacts", "todos"]
 
