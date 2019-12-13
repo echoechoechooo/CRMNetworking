@@ -13,8 +13,9 @@ export default class Contacts extends React.Component {
       return (
         <tr key = {contact.id}>
           <th scope="row">
-            <p>
+            <p><Link to = {`/contacts/${contact.id}`} style={{color: "white"}}>
               {contact.first_name} {contact.last_name}
+              </Link>
             </p>
           </th>
           <th>{contact.location}</th>
