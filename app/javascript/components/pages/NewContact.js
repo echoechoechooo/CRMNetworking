@@ -28,7 +28,9 @@ export default class NewContact extends React.Component {
                 location: "",
                 industry: "",
                 email_address: "",
-                phone_number: ""
+                phone_number: "",
+                notes: "",
+                login: ""
             },
             createSucess: false
         }
@@ -57,60 +59,73 @@ export default class NewContact extends React.Component {
 
     render () {
         const{form, createSucess} = this.state
-        const{first_name, last_name, location, industry, email_address, phone_number} = form
+        const{first_name, last_name, location, industry, email_address, phone_number, notes, login} = form
         return (
             <React.Fragment>
                 {createSucess ? <Redirect to="/" />: null}
+                <div className="form-board">
                 <form className="form-contact">
                   <fieldset>
-    
-                    <legend>Create Contact</legend>
-    
+
+                    <h1 className="headerFont headerStyle glow">Create Contact</h1>
+
                     <Row form>
                       <Col md={6}>
                         <FormGroup>
                           <div className="first-row">
-                            <label className="col-form-label" for="inputDefault">First Name</label>
+                            <label className="col-form-label label-color" for="inputDefault">First Name</label>
                             <input name="first_name" value = {first_name} type="text" className="form-control" placeholder="First Name" id="inputDefault" onChange = {this.onChange} />
                           </div>
                         </FormGroup>
                       </Col>
                     <Col md={6}>
                         <FormGroup>
-    
+
                     <div className="first-row">
-                      <label className="col-form-label" for="inputDefault">Last Name</label>
+                      <label className="col-form-label label-color" for="inputDefault">Last Name</label>
                       <input name="last_name" value = {last_name} type="text" className="form-control" placeholder="Last Name" id="inputDefault" onChange = {this.onChange} />
                     </div>
-    
+
                     </FormGroup>
                       </Col>
                     </Row>
-    
+
                     <div className="form-group">
-                      <label className="col-form-label" for="inputDefault">Location</label>
+                      <label className="col-form-label label-color" for="inputDefault">Location</label>
                       <input name="location" value = {location} type="text" className="form-control" placeholder="Location" id="inputDefault" onChange = {this.onChange} />
                     </div>
-    
+
                     <div className="form-group">
-                      <label className="col-form-label" for="inputDefault">Industry</label>
+                      <label className="col-form-label label-color" for="inputDefault">Industry</label>
                       <input name="industry" value = {industry} type="text" className="form-control" placeholder="Industry" id="inputDefault" onChange = {this.onChange} />
                     </div>
-    
+
                     <div className="form-group">
-                      <label for="exampleInputEmail1">Email Address</label>
+                      <label for="exampleInputEmail1" className="label-color">Email Address</label>
                       <input name="email_address" value = {email_address} onChange = {this.onChange} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" />
                     </div>
-    
+
                     <div className="form-group">
-                      <label className="col-form-label" for="inputDefault">Phone Number</label>
+                      <label className="col-form-label label-color" for="inputDefault">Phone Number</label>
                       <input name="phone_number" value = {phone_number} type="text" className="form-control" placeholder="Phone Number" id="inputDefault" onChange = {this.onChange} />
                     </div>
-    
-                    <button className="submit-button" onClick={this.localSubmit} type="submit" className="btn btn-primary">Submit</button>
-    
+
+                    <div className="form-group">
+                      <label className="col-form-label label-color" for="inputDefault">Login</label>
+                      <input name="login" value = {login} type="text" className="form-control" placeholder="Login" id="inputDefault" onChange = {this.onChange} />
+                    </div>
+
+                    <div className="form-group">
+                      <label className="col-form-label label-color" for="inputDefault">Notes</label>
+                      <textarea name="notes" rows="5" columns="10" value = {notes} type="text" className="form-control" placeholder="Notes" id="inputDefault" onChange = {this.onChange} />
+                    </div>
+
+                    <br />
+                    <button className="submit-button" onClick={this.localSubmit} type="submit" className="btn btn-primary" style = {{width: "500px", backgroundColor: "#FF6E86"}}>Submit</button>
+
                   </fieldset>
                 </form>
+                </div>
             </React.Fragment>
         );
     }

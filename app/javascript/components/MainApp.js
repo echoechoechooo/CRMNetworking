@@ -152,7 +152,9 @@ export default class MainApp extends React.Component {
 
                     <div className="collapse navbar-collapse" id="navbarColor02">
                         <ul className="navbar-nav mr-auto">
-                            <img src ={logo} />
+                            <NavItem>
+                                <img src ={logo} />
+                            </NavItem>
                             <NavItem className = "nav-item">
                                 <Link to="/" className = "nav-link headerFont">Dashboard</Link>
                             </NavItem>

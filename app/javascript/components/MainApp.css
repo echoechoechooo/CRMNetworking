@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
 
 :root{
   --color-1: #ED497B;
@@ -36,16 +37,29 @@ body:before {
   /* background-image: url("background.jpg"); */
 }
 
+.tableheaders {
+  font-family: 'Press Start 2P', cursive;
+}
+
 .singlecontact {
   text-align: center;
   padding-top: 50px;
 }
 
 .form-contact {
-  max-width: 500px;
-  margin-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 50px 50px 50px 50px;
+  max-width: 600px;
+  background-color: #1f1077;
+  margin: 50px 0px 50px 0px;
+}
+
+.form-board {
+  margin: 0 auto;
+  width: 600px;
+}
+
+.inputStyle {
+  width:500px;
 }
 
 .first-row {
@@ -61,6 +75,10 @@ body:before {
   color: white;
 }
 
+.btn-placement {
+  text-align: center;
+}
+
 @font-face {
     font-family: 'houseonmars';
     src: url('house_on_mars-webfont.woff2') format('woff2'),
@@ -70,10 +88,36 @@ body:before {
 
 }
 
+.glow {
+  text-shadow: 2px 2px 5px #42f5e6;
+}
+
+.edit {
+  width:25px;
+  text-align:center;
+  opacity: .5;
+}
+
+.edit:hover {
+  opacity: 1;
+  margin: 0 auto;
+}
+
+.label-color {
+  color:white;
+}
+
 .headerFont{
   font-family: 'houseonmars';
   font-size: 24px;
   white-space: nowrap;
+}
+
+.headerStyle{
+  color: white;
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 50px;
 }
 
 .contactTable{

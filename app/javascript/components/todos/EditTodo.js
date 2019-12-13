@@ -102,30 +102,39 @@ export default class EditTodo extends React.Component {
         return (
             <React.Fragment>
                 {editSuccess || deleteSuccess ? <Redirect to={"/todos"} />: null}
-                <h1>Edit Contact</h1>
-                <div>
-                    <label>Title</label>
-                    <input name="title" value = {title} onChange = {this.onChange} type = 'text' />
+                <div className="form-board form-contact" style={{marginTop:"50px"}}>
+                <h1 className="headerFont headerStyle glow">Edit Todo</h1>
+
+
+                <div className="form-group">
+                  <label className="col-form-label label-color" for="inputDefault">Title</label>
+                  <input name="title" value = {title} type="text" className="form-control" placeholder="Name" onChange = {this.onChange} />
                 </div>
-                <div>
-                    <label>Description</label>
-                    <textarea name="description" value = {description} onChange = {this.onChange} type = 'text' />
+
+                <div className="form-group">
+                    <label className="col-form-label label-color" for="inputDefault">Description</label>
+                    <textarea name="description" value = {description} type="text" className="form-control" placeholder="Description" onChange = {this.onChange} type="text" />
                 </div>
+
                 <div>
                     <button className ={!addDate ? "btn btn-success": "btn btn-danger"} onClick = {this.enableDate}>{addDate ? "Disable Date":"Enable Date"}</button>
                 </div>
                 {!addDate ? null: 
                 <div>
-                    <label>Due Date</label>
+                    <label style={{color:"white", marginTop:"25px"}}>Due Date</label>
                     <DateTimePicker onChange={this.changeDate} value={due_date}/>
                 </div>}
+                <br />
                 <div>
                     <button className ={is_done ? "btn btn-success": "btn btn-danger"} onClick = {this.changeIsDone}>{is_done ? "Complete":"Incomplete"}</button>
                 </div>
+                <br />
                 <div>
-                    <button className ="btn btn-danger" onClick = {this.localDelete}>Delete</button>
+                    <button className="submit-button btn btn-primary" style = {{width: "500px", backgroundColor: "#FF6E86"}} onClick = {this.localDelete}>Delete</button>
                 </div>
-                <button onClick={this.localSubmit}>Submit</button>
+                <br />
+                <button className="submit-button btn btn-primary" style = {{width: "500px", backgroundColor: "#FF6E86"}} onClick={this.localSubmit}>Submit</button>
+                </div>
             </React.Fragment>
         );
     }

@@ -3,7 +3,7 @@ import React from "react"
 export default class Calendar extends React.Component {
   render () {
     return (
-        <h1>Calender Page</h1>
+        <h1 className="headerFont headerStyle glow">The calendar page is coming soon!</h1>
     );
   }
 }
