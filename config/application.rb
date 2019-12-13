@@ -23,9 +23,9 @@ module NetworkingCrm
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-    config.hosts << "b1fb713da65e4c218e822f5e7e7c27fd.vfs.cloud9.us-east-2.amazonaws.com"
-    config.hosts << "cryptic-forest-67187.herokuapp.com"
+    config.hosts << "echo-net.herokuapp.com"
     config.hosts << "4519d5e5dcd14f16a10b95a770ebd2e8.vfs.cloud9.us-east-2.amazonaws.com"
+    config.hosts << "7856ddd94aa94400b519209321e5897c.vfs.cloud9.us-east-2.amazonaws.com"
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
