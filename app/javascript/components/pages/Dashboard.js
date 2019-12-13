@@ -5,7 +5,7 @@ import { Table } from 'reactstrap'
 import Calendar from 'react-calendar';
 import addButton from "../../images/plusButton.png"
 import "../CalendarAlt.css"
-
+import bird from "./bird.jpg"
 
 export default class Dashboard extends React.Component {
     state = {
@@ -47,7 +47,7 @@ export default class Dashboard extends React.Component {
             return (
                 <tr key = {contact.id} className={dex == 0 ? "tableRowTop" : "tableRow"}>
                     <td style={{padding: "0px 0px 0px 0px"}}>
-                        <Link to = {`/contacts/${contact.id}`} style={{fontSize: "20px", padding: "0px 0px 0px 10px", color: "white"}}>{contact.first_name} is {contact.last_name}</Link>
+                        <Link to = {`/contacts/${contact.id}`} style={{fontSize: "20px", padding: "0px 0px 0px 10px", color: "white"}}>{contact.first_name} {contact.last_name}</Link>
                         <h3 style={{fontSize: "12px", padding: "0px 0px 0px 10px", color: "white"}}>{contact.industry != null & contact.industry != "" ? contact.industry: `Connect with ${contact.first_name}!`}</h3>
                     </td>
                 </tr>)
@@ -115,7 +115,30 @@ export default class Dashboard extends React.Component {
                         <th className = "headerFont tableTitle" scope="col">Articles<Link to = {"/"} style={{padding: "0px 0px 0px 10px", float: "right"}}></Link></th>
                       </tr>
                     </thead>
-                    <tbody className="sidebar">
+                    <tbody>
+                    <div className="flex">
+                      <div className="flex-item">
+                        <img className = "articleThumbnail" src = {bird} />
+                        <h1 className = "articleTitle">All About Them Birds</h1>
+                        <div className = "tagFlex">
+                          <div className = "flex-tag">
+                            <h1 className = "tagTitle">Nature</h1>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex-item">
+                        <img className = "articleThumbnail" src = {bird} />
+                        <h1 className = "articleTitle">Bird</h1>
+                      </div>
+                      <div className="flex-item">
+                        <img className = "articleThumbnail" src = {bird} />
+                        <h1 className = "articleTitle">Bird</h1>
+                      </div>
+                      <div className="flex-item">
+                        <img className = "articleThumbnail" src = {bird} />
+                        <h1 className = "articleTitle">Bird</h1>
+                      </div>
+                    </div>
                     </tbody>
                   </table>
                 </div>
