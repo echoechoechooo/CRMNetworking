@@ -34,7 +34,8 @@ export default class MainApp extends React.Component {
             contacts: [],
             todos: [],
             githubMembers: [],
-            width: 0
+            width: 0,
+            navBarExpanded: false
         }
     }
     componentDidMount (){
@@ -136,6 +137,10 @@ export default class MainApp extends React.Component {
         })
     }
 
+    openNavbar = () => {
+        this.setState({navBarExpanded: !this.state.navBarExpanded})
+    }
+
   render () {
     const { logged_in,sign_in_route, sign_out_route, current_user_id } = this.props
     const {contacts, todos, height, width} = this.state
@@ -146,11 +151,11 @@ export default class MainApp extends React.Component {
                     <Route exact path="/" render = {()=><Dashboard contacts = {contacts} todos = {todos} width = {width}/>} />
                 </Switch>
                 <Nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor: "#0E0426"}}>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                    <button className={this.state.navBarExpanded ? "navbar-toggler": "navbar-toggler collapsed"} type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded={this.state.navBarExpanded} aria-label="Toggle navigation" onClick = {this.openNavbar}>
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
-                    <div className="collapse navbar-collapse" id="navbarColor02">
+                    <div className={!this.state.navBarExpanded ? "collapse navbar-collapse": "collapse navbar-collapse show"}  id="navbarColor02">
                         <ul className="navbar-nav mr-auto">
                             <NavItem>
                                 <img src ={logo} />
@@ -165,9 +170,6 @@ export default class MainApp extends React.Component {
                                 <Link to="/todos" className = "nav-link headerFont">Todos</Link>
                             </NavItem>
                             <NavItem className = "nav-item">
-                                <Link to="/calendar" className = "nav-link headerFont">Calendar</Link>
-                            </NavItem>
-                            <NavItem className = "nav-item">
                                 <Link to="/articles" className = "nav-link headerFont">Articles</Link>
                             </NavItem>
                             <NavItem className = "nav-item">
@@ -180,10 +182,10 @@ export default class MainApp extends React.Component {
                     <Route exact path="/contacts" render = {()=><Contacts contacts = {contacts}/>} />
                     <Route exact path="/contacts/:id" render = {(props)=><ShowContact {...props} currentUser = {current_user_id} deleteContact = {this.delete}/>} />
                     <Route exact path="/newcontact" render = {(props)=><NewContact {...props} onSubmit = {this.add}/>}/>
-                    <Route path = "/contacts/:id/edit" render = {(props) => <EditContact {...props} onSubmit = {this.edit}/>} />
+                    <Route exact path = "/contacts/:id/edit" render = {(props) => <EditContact {...props} onSubmit = {this.edit}/>} />
                     <Route exact path="/todos" render = {()=><Todos todos = {todos} onSubmit = {this.edit}/>} />
                     <Route exact path="/newtodo" render = {(props)=><NewTodo {...props} onSubmit = {this.add}/>}/>
-                    <Route path = "/todos/:id/edit" render = {(props) => <EditTodo {...props} onSubmit = {this.edit} deleteTodo = {this.delete}  />} />
+                    <Route exact path = "/todos/:id/edit" render = {(props) => <EditTodo {...props} onSubmit = {this.edit} deleteTodo = {this.delete}  />} />
                     <Route exact path="/calendar" render = {()=><Calendar/>} />
                     <Route exact path="/articles" render = {()=><Articles/>} />
                 </Switch>
