@@ -92,9 +92,8 @@ getCurrentContact = () => {
       return (
         <React.Fragment>
             {editSuccess ? <Redirect to={"/contacts/" + contactId.toString()} />: null}
-            <div className="form-board">
-            <form className="form-contact">
-              <fieldset>
+            <div className="form-board form-contact">
+            
 
                 <h1 className="headerFont headerStyle glow">Edit Contact</h1>
 
@@ -150,10 +149,8 @@ getCurrentContact = () => {
                 </div>
 
                 <br />
-                <button style = {{width: "500px", backgroundColor: "#FF6E86"}} className="submit-button" onClick={this.localSubmit} type="submit" className="btn btn-primary">Submit</button>
+                <button style = {{backgroundColor: "#FF6E86"}} onClick={this.localSubmit} type="submit" className="btn btn-primary contactButton">Submit</button>
 
-              </fieldset>
-            </form>
             </div>
         </React.Fragment>
       );

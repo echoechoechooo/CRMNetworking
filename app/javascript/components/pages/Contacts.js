@@ -12,24 +12,19 @@ export default class Contacts extends React.Component {
     let contactList = contacts.map(contact => {
       return (
         <tr key = {contact.id}>
-          <th scope="row">
-            <p><Link to = {`/contacts/${contact.id}`} style={{color: "white"}}>
-              {contact.first_name} {contact.last_name}
-              </Link>
-            </p>
-          </th>
-          <th>{contact.location}</th>
-          <th>{contact.industry}</th>
-          <th>{contact.email_address}</th>
-          <th>{contact.phone_number}</th>
-          <th>{contact.login}</th>
-          <th>{contact.notes}</th>
+          <th><p><Link to = {`/contacts/${contact.id}`} style={{color: "white"}}>{contact.first_name} {contact.last_name}</Link></p></th>
+          <th><p><Link to = {`/contacts/${contact.id}`} style={{color: "white"}}>{contact.location}</Link></p></th>
+          <th><p><Link to = {`/contacts/${contact.id}`} style={{color: "white"}}>{contact.industry}</Link></p></th>
+          <th><p><Link to = {`/contacts/${contact.id}`} style={{color: "white"}}>{contact.email_address}</Link></p></th>
+          <th><p><Link to = {`/contacts/${contact.id}`} style={{color: "white"}}>{contact.phone_number}</Link></p></th>
+          <th><p><Link to = {`/contacts/${contact.id}`} style={{color: "white"}}>{contact.login}</Link></p></th>
+          <th><p><Link to = {`/contacts/${contact.id}`} style={{color: "white"}}>{contact.notes}</Link></p></th>
         </tr>
       )
     })
     return (
       <div>
-        <Table striped style={{backgroundColor:"#361077", color:"white"}}>
+        <Table striped style={{backgroundColor:"#361077", color:"white", tableLayout: "fixed"}}>
           <thead>
             <tr className="tableheaders">
               <th>Name</th>

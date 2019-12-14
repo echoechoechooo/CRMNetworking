@@ -80,7 +80,7 @@ export default class NewContact extends React.Component {
             </div>}
             <br />
             <br />
-            <button className="submit-button btn btn-primary" style = {{width: "500px", backgroundColor: "#FF6E86"}} onClick={this.localSubmit}>Submit</button>
+            <button className="submit-button btn btn-primary" style = {{width: "100%", backgroundColor: "#FF6E86"}} onClick={this.localSubmit}>Submit</button>
             </div>
         </React.Fragment>
     );

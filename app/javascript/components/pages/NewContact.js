@@ -63,10 +63,8 @@ export default class NewContact extends React.Component {
         return (
             <React.Fragment>
                 {createSucess ? <Redirect to="/" />: null}
-                <div className="form-board">
-                <form className="form-contact">
-                  <fieldset>
-
+                <div className="form-board form-contact">
+                
                     <h1 className="headerFont headerStyle glow">Create Contact</h1>
 
                     <Row form>
@@ -121,10 +119,7 @@ export default class NewContact extends React.Component {
                     </div>
 
                     <br />
-                    <button className="submit-button" onClick={this.localSubmit} type="submit" className="btn btn-primary" style = {{width: "500px", backgroundColor: "#FF6E86"}}>Submit</button>
-
-                  </fieldset>
-                </form>
+                    <button className="submit-button" onClick={this.localSubmit} type="submit" className="btn btn-primary contactButton" style = {{backgroundColor: "#FF6E86"}}>Submit</button>
                 </div>
             </React.Fragment>
         );

@@ -46,7 +46,7 @@ export default class Todos extends React.Component {
     return (
       <div>
         
-        <Table striped style={{backgroundColor:"#361077", color:"white"}}>
+        <Table striped style={{backgroundColor:"#361077", color:"white", tableLayout: "fixed"}}>
           <thead>
             <tr className="tableheaders">
               <th>Todo</th>
