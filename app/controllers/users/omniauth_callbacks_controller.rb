@@ -15,7 +15,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         # get for followers_url to input into Contacts
         contacts = Contact.all
         response_follower = HTTParty.get(@user.followers_url)
-        response_follower.each do |follower| 
+        response_follower.each do |follower|
             contact = @user.contacts.where(github_id:follower["id"]).first_or_create
             response_follower = HTTParty.get(follower["url"])
             contact.update(login:response_follower["login"], avatar_url:response_follower["avatar_url"], url:response_follower["url"])
