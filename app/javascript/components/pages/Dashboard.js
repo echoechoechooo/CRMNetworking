@@ -22,12 +22,7 @@ export default class Dashboard extends React.Component {
     getCalender = () => {
       const {todos} = this.props
       const curDate = this.state.date.toLocaleDateString()
-      let daysTodo = todos.filter(todo => {
-        if(todo.due_date === null){
-          return false
-        }
-        return new Date(todo.due_date).toLocaleDateString() === curDate
-      })
+      let daysTodo = todos.filter(todo => new Date(todo.due_date).toLocaleDateString() === curDate)
       .map((todo,dex) => {
         return (
           <tr key = {todo.id} className={dex == 0 ? "tableRowTop" : "tableRow"}>
