@@ -18,6 +18,6 @@ class User < ApplicationRecord
         end
     end
 
-    has_many :todos
+    has_many :todos, -> { order("due_date") }
     has_many :contacts, -> { order("first_name") }
 end
