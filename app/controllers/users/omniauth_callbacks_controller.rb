@@ -50,8 +50,13 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
             end
             # p response_following["name"]
         end
-        
-        # contacts.sort_by!{ |contact| contact["first_name"].downcase}
+        # p contacts
+        # sorting contacts alphabetically
+        # sort_alpha = HTTParty.get(@user.following_url)
+        # if (contacts["first_name"])
+        # contacts.sort_by! { |contact| contact["first_name"].downcase}
+        # end
+        # contacts.order()
         
         if @user.persisted?
           sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
