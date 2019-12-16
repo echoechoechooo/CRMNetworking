@@ -84,11 +84,6 @@ getCurrentContact = () => {
       this.getCurrentContact()
       const{form, contactId, editSuccess} = this.state
       const{first_name, last_name, location, industry, email_address, phone_number, notes, login} = form
-      // if(form.first_name == ""){
-      //     return (
-      //       <div></div>
-      //     );
-      // }
       return (
         <React.Fragment>
             {editSuccess ? <Redirect to={"/contacts/" + contactId.toString()} />: null}
