@@ -18,7 +18,7 @@ import Calendar from "./pages/Calendar"
 import Articles from "./pages/Articles"
 import logo from "./logo.svg"
 let endPointArray =["contacts", "todos"]
-
+let API_KEY = "25ad034c5f0c45f8bf67762c1aa42371"
 const firstWidth = {
     "--firstWidth": "5%"
 }
@@ -34,6 +34,7 @@ export default class MainApp extends React.Component {
             contacts: [],
             todos: [],
             githubMembers: [],
+            articles: [],
             width: 0,
             navBarExpanded: false
         }
@@ -42,6 +43,7 @@ export default class MainApp extends React.Component {
         for(let i = 0; i < endPointArray.length; i++){
             this.fetchIt(endPointArray[i])
         }
+        this.fetchArticles()
         window.addEventListener('resize', this.updateWindowDimensions)
         this.updateWindowDimensions()
     }
@@ -82,7 +84,17 @@ export default class MainApp extends React.Component {
                     break
             }
         })
-    
+    }
+
+    fetchArticles = () => {
+        var url = 'https://newsapi.org/v2/top-headlines?' + 'country=us&' +  'apiKey=25ad034c5f0c45f8bf67762c1aa42371'
+        fetch(url)
+        .then(response => {
+            return response.json()
+        })
+        .then(output => {
+            this.setState({articles: output})
+        })
     }
 
     add = (attrs, type) => {
@@ -142,8 +154,8 @@ export default class MainApp extends React.Component {
     }
 
   render () {
-    const { logged_in,sign_in_route, sign_out_route, current_user_id } = this.props
-    const {contacts, todos, height, width} = this.state
+    const { logged_in,sign_in_route, sign_out_route, current_user_id, current_user } = this.props
+    const {contacts, todos, height, width, articles} = this.state
     return (
         <div>
             <Router>
@@ -187,7 +199,7 @@ export default class MainApp extends React.Component {
                     <Route exact path="/newtodo" render = {(props)=><NewTodo {...props} onSubmit = {this.add}/>}/>
                     <Route exact path = "/todos/:id/edit" render = {(props) => <EditTodo {...props} onSubmit = {this.edit} deleteTodo = {this.delete}  />} />
                     <Route exact path="/calendar" render = {()=><Calendar/>} />
-                    <Route exact path="/articles" render = {()=><Articles/>} />
+                    <Route exact path="/articles" render = {()=><Articles {...props} articles = {articles}/>} />
                 </Switch>
             </Router>
         </div>
