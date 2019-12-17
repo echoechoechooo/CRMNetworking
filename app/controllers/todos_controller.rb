@@ -23,7 +23,7 @@ class TodosController < ApplicationController
 
     def update
         todo = current_user.todos.find (params[:id])
-        todo.update_attributes(todo_params)
+        todo.update(todo_params)
         render json: todo, status: 201
     end
 
