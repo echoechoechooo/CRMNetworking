@@ -7,6 +7,7 @@ import "../CalendarAlt.css"
 import {getCompanySite, getArticleTitle} from "../GetArticleInfo"
 let suggestedTags = ["augmented reality", "virtual reality", "computer vision", "technology"]
 
+
 export default class Dashboard extends React.Component {
     state = {
       date: new Date(),
