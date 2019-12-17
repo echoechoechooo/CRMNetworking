@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     get '*path', to: 'pages#index', constraints: ->(request){ request.format.html? }
     resources :contacts
     resources :todos
+    put '/updateusertags', to: 'users#updatetags'
     root to: 'pages#index'
 end

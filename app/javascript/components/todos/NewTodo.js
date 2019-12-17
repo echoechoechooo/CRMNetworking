@@ -57,25 +57,31 @@ export default class NewContact extends React.Component {
     const{title, description, due_date} = form
     return (
         <React.Fragment>
+            <div className="form-board form-contact" style={{marginTop:"50px"}}>
             {createSucess ? <Redirect to="/todos" />: null}
-            <h1>Add Todo</h1>
-            <div>
-                <label>Name</label>
-                <input name="title" value = {title} onChange = {this.onChange} type = 'text' />
+            <h1 className="headerFont headerStyle glow">Add Todo</h1>
+
+
+            <div className="form-group">
+                <label className="col-form-label label-color" for="inputDefault">Name</label>
+                <input name="title" value = {title} type="text" className="form-control" placeholder="Name" onChange = {this.onChange} />
             </div>
-            <div>
-              <label>Description</label>
-              <textarea name="description" value = {description} onChange = {this.onChange} type = 'text' />
+
+            <div className="form-group">
+                <label className="col-form-label label-color" for="inputDefault">Description</label>
+                <textarea name="description" value = {description} type="text" className="form-control" placeholder="Description" onChange = {this.onChange} type="text" />
             </div>
-            <div>
-                <button className ={!addDate ? "btn btn-success": "btn btn-danger"} onClick = {this.enableDate}>{addDate ? "Disable Date":"Enable Date"}</button>
-            </div>
+
+            <button className ={!addDate ? "btn btn-success": "btn btn-danger"} onClick = {this.enableDate}>{addDate ? "Disable Date":"Enable Date"}</button>
             {!addDate ? null: 
             <div>
-                <label>Due Date</label>
+                <label style={{color:"white", marginTop:"25px"}}>Due Date</label>
                 <DateTimePicker onChange={this.changeDate} value={due_date}/>
             </div>}
-            <button onClick={this.localSubmit}>Submit</button>
+            <br />
+            <br />
+            <button className="submit-button btn btn-primary" style = {{width: "100%", backgroundColor: "#FF6E86"}} onClick={this.localSubmit}>Submit</button>
+            </div>
         </React.Fragment>
     );
   }

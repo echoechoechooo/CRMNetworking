@@ -45,23 +45,27 @@ export default class ShowContact extends React.Component {
             );
         }
         return (
+            <div className="form-board form-contact" style={{marginTop: "50px"}}>
             <div className="singlecontact">
 
-                <h1>{currentContact.first_name} {currentContact.last_name}</h1>
-                {currentContact.location}
+                <h1 className="headerFont headerStyle glow">{currentContact.first_name} {currentContact.last_name}</h1>
+                <div style={{color:"white"}}>
+                    <div>{currentContact.location}</div>
+                    <div>{currentContact.industry}</div>
+                    <div>{currentContact.email_address}</div>
+                    <div>{currentContact.phone_number}</div>
+                    <div><a href = {`http://github.com/${currentContact.login}`} style={{color:"white"}}>github.com/{currentContact.login}</a></div>
+                    <div>Notes: {currentContact.notes}</div>
+                </div>
                 <br />
-                {currentContact.industry}
-                <br />
-                {currentContact.email_address}
-                <br />
-                {currentContact.phone_number}
                 {currentUser != currentContact.user_id ? null :
                 <div className="buttons">
                     {deleteSuccess ? <Redirect to="/" />: null}
-                    <Link to={`/contacts/${currentContact.id}/edit`}><button type="button" className="btn btn-outline-primary" style = {{margin: "10px", width: "100px"}}>Edit</button></Link>
-                    <button type="button" className="btn btn-outline-primary" onClick = {this.localDelete} style = {{margin: "10px", width: "100px"}}>Delete</button>
+                    <Link to={`/contacts/${currentContact.id}/edit`}><button type="button" className="btn btn-danger" style = {{margin: "10px", width: "100px", backgroundColor:"#591481"}}>Edit</button></Link>
+                    <button type="button" className="btn btn-danger" onClick = {this.localDelete} style = {{margin: "10px", width: "100px"}}>Delete</button>
                 </div>
                 }
+            </div>
             </div>
         );
     }

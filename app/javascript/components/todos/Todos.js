@@ -1,6 +1,7 @@
 import React from "react"
 import { Table } from 'reactstrap'
 import {Link} from "react-router-dom"
+import edit from "./edit.png"
 
 export default class Todos extends React.Component {
 
@@ -38,28 +39,30 @@ export default class Todos extends React.Component {
             <th>{todo.due_date == null ? "": this.formatDate(todo)}</th>
             <th>
               <button className ={todo.is_done ? "btn btn-success": "btn btn-danger"} onClick = {() => this.changeIsDone(todo)}>{todo.is_done ? "Complete":"Incomplete"}</button></th>
-            <th><Link to={`/todos/${todo.id}/edit`} className="btn btn-primary">Edit</Link></th>
+            <th><Link to={`/todos/${todo.id}/edit`}><img src={edit} className="edit" alt="edit" /></Link></th>
           </tr>
       )
     })
     return (
       <div>
-        <h1>Todos Page</h1>
-        <Table striped>
+        
+        <Table striped style={{backgroundColor:"#361077", color:"white", tableLayout: "fixed"}}>
           <thead>
-            <tr>
+            <tr className="tableheaders">
               <th>Todo</th>
               <th>Description</th>
               <th>Due Date</th>
-              <th></th>
-              <th></th>
+              <th>Complete?</th>
+              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
             {todoList}
           </tbody>
         </Table>
-        <Link to={"/newtodo"} className="btn btn-danger">Add Todo</Link>
+        <div className="btn-placement">
+        <Link to={"/newtodo"} style={{backgroundColor:"#591481"}} className="btn btn-danger">Add Todo</Link>
+        </div>
       </div>
     );
   }
