@@ -33,29 +33,29 @@ export default class Dashboard extends React.Component {
           </tr>)
       })
       return(
-      <div className = "calendarParent">
-        <div className = "widget calendarWidget">
-          <Calendar onChange={this.onChange} value={this.state.date} className = "calendarBackground" tileClassName = "calendarDays"/>
-        </div>
-        <div className = "calendarSpacing widget"></div>
-        <div className = "sideCalendarWidget widget">
-          <table className="contactTable table-hover">
-            <thead>
-              <tr>
-                <th className = "headerFont tableTitle" scope="col"> {curDate}
-                </th>
-              </tr>
-            </thead>
-            <tbody className = "sidebar">
-                {daysTodo}
-            </tbody>
-          </table> 
-        </div>
-      </div>)
+        <div className = "calendarParent">
+          <div className = "widget calendarWidget">
+            <Calendar onChange={this.onChange} value={this.state.date} className = "calendarBackground" tileClassName = "calendarDays"/>
+          </div>
+          <div className = "calendarSpacing widget"></div>
+          <div className = "sideCalendarWidget widget">
+            <table className="contactTable table-hover">
+              <thead>
+                <tr>
+                  <th className = "headerFont tableTitle" scope="col"> {curDate}
+                  </th>
+                </tr>
+              </thead>
+              <tbody className = "sidebar">
+                  {daysTodo}
+              </tbody>
+            </table> 
+          </div>
+        </div>)
     }
 
     render () {
-        const{contacts, todos, width} = this.props
+        const{contacts, todos, width, articles} = this.props
         let contactList =  contacts.map((contact, dex) => {
             return (
                 <tr key = {contact.id} className={dex == 0 ? "tableRowTop" : "tableRow"}>
@@ -74,13 +74,20 @@ export default class Dashboard extends React.Component {
                 </td>
             </tr>)
         })
-
+        let articleList = articles.map((article, dex) => {
+          return (
+            <div key = {dex} className="articleFlex">
+              <div className="flex-item">
+                <img className = "articleThumbnail" src = {article.urlToImage} />
+                <h1 className = "articleTitle">{article.title}</h1>
+              </div>
+            </div>
+          )
+        })
         return (
           <div>
             <div className = "widgetParent">
-
               <div className = "endSpacing widget"/>
-
               <div className = "sideWidget widget">
                 <table className="contactTable table-hover">
                   <thead>
@@ -120,30 +127,32 @@ export default class Dashboard extends React.Component {
                   <div className = "endSpacing widget" />
               </div>}
               <div className = {width > 1000 ? "widgetParent2" : "widgetParent3"}>
-                <div className = "endSpacing widget"/>
                 <div className = "articlesWidget widget">
-                  <table className="contactTable table-hover">
-                    <thead>
-                      <tr>
-                        <th className = "headerFont tableTitle" scope="col">Articles<Link to = {"/"} style={{padding: "0px 0px 0px 10px", float: "right"}}></Link></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    <div className="flex">
-                      <div className="flex-item">
-                        <img className = "articleThumbnail" src = {bird} />
-                        <h1 className = "articleTitle">All About Them Birds</h1>
-                        <div className = "tagFlex">
-                          <div className = "flex-tag">
-                            <h1 className = "tagTitle">Nature</h1>
-                          </div>
-                        </div>
+                  <div className="articlesTable">
+                    {articleList}
+                  </div>
+                  <h1 className = "articleHeader headerFont">Articles</h1>
+                  <div className="sideArticlesTable">
+                    <div className = "tagsWrapper">
+                      <div className = "tagFlexItem">
+                        <h1 className = "tagTitle">Nature</h1>
+                      </div>
+                      <div className = "tagFlexItem">
+                        <h1 className = "tagTitle">Nature</h1>
+                      </div>
+                      <div className = "tagFlexItem">
+                        <h1 className = "tagTitle">Nature</h1>
+                      </div>
+                      <div className = "tagFlexItem">
+                        <h1 className = "tagTitle">Nature</h1>
+                      </div>
+                      <div className = "tagFlexItem">
+                        <h1 className = "tagTitle">Nature</h1>
                       </div>
                     </div>
-                    </tbody>
-                  </table>
+                  </div>
+                  <h1 className = "sideArticleHeader headerFont">Tags</h1>
                 </div>
-              <div className = "endSpacing widget" />
             </div>
             </div>
           </div>
