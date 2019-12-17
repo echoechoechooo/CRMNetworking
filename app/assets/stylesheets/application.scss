@@ -406,6 +406,13 @@ body:before {
   overflow-y: auto
 }
 
+.articleTagsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  margin-top: 35px
+}
+
 .tagFlexItem {
   flex: auto;
   border: 5px solid transparent;
@@ -495,7 +502,8 @@ body:before {
 }
 
 .articlesWidget{
-  width: 100%
+  width: 100%;
+  margin-bottom: 50px
 }
 
 .sideArticlesWidget{
@@ -646,9 +654,10 @@ body:before {
     width: 250px;
     margin-right: 10px;
     margin-left: 10px;
-    border: 1px solid white;
+    border: 2px solid white;
     border-radius: 2%;
     height: 90%;
+    background: white
   }
 
   .articleThumbnail {
@@ -660,8 +669,8 @@ body:before {
   .articleTitle{
     font-family: 'houseonmars';
     font-size: 18px;
-    letter-spacing: 2px;
-    color: white;
+    // letter-spacing: 2px;
+    color: var(--color-4);
     white-space: normal;
     height: 60%;
     margin-bottom: 0px;

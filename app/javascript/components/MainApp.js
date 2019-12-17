@@ -153,56 +153,56 @@ export default class MainApp extends React.Component {
         this.setState({navBarExpanded: !this.state.navBarExpanded})
     }
 
-  render () {
-    const { logged_in,sign_in_route, sign_out_route, current_user_id, current_user } = this.props
-    const {contacts, todos, width, articles} = this.state
-    return (
-        <div>
-            <Router>
-                <Switch>
-                    <Route exact path="/" render = {()=><Dashboard contacts = {contacts} todos = {todos} width = {width} articles = {articles}/>} />
-                </Switch>
-                <Nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor: "#0E0426"}}>
-                    <button className={this.state.navBarExpanded ? "navbar-toggler": "navbar-toggler collapsed"} type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded={this.state.navBarExpanded} aria-label="Toggle navigation" onClick = {this.openNavbar}>
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
+    render () {
+        const { logged_in,sign_in_route, sign_out_route, current_user_id, current_user } = this.props
+        const {contacts, todos, width, articles} = this.state
+        return (
+            <div>
+                <Router>
+                    <Switch>
+                        <Route exact path="/" render = {()=><Dashboard contacts = {contacts} todos = {todos} width = {width} articles = {articles}/>} />
+                    </Switch>
+                    <Nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor: "#0E0426"}}>
+                        <button className={this.state.navBarExpanded ? "navbar-toggler": "navbar-toggler collapsed"} type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded={this.state.navBarExpanded} aria-label="Toggle navigation" onClick = {this.openNavbar}>
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
 
-                    <div className={!this.state.navBarExpanded ? "collapse navbar-collapse": "collapse navbar-collapse show"}  id="navbarColor02">
-                        <ul className="navbar-nav mr-auto">
-                            <NavItem>
-                                <img src ={logo} />
-                            </NavItem>
-                            <NavItem className = "nav-item">
-                                <Link to="/" className = "nav-link headerFont">Dashboard</Link>
-                            </NavItem>
-                            <NavItem className = "nav-item">
-                                <Link to="/contacts" className = "nav-link headerFont">Contacts</Link>
-                            </NavItem>
-                            <NavItem className = "nav-item">
-                                <Link to="/todos" className = "nav-link headerFont">Todos</Link>
-                            </NavItem>
-                            <NavItem className = "nav-item">
-                                <Link to="/articles" className = "nav-link headerFont">Articles</Link>
-                            </NavItem>
-                            <NavItem className = "nav-item">
-                              <NavLink className = "headerFont" href={logged_in ? sign_out_route:sign_in_route}>{logged_in ? "Sign Out" : "Sign In"}</NavLink>
-                            </NavItem>
-                        </ul>
-                    </div>
-                </Nav>
-                <Switch>
-                    <Route exact path="/contacts" render = {()=><Contacts contacts = {contacts}/>} />
-                    <Route exact path="/contacts/:id" render = {(props)=><ShowContact {...props} currentUser = {current_user_id} deleteContact = {this.delete}/>} />
-                    <Route exact path="/newcontact" render = {(props)=><NewContact {...props} onSubmit = {this.add}/>}/>
-                    <Route exact path = "/contacts/:id/edit" render = {(props) => <EditContact {...props} onSubmit = {this.edit}/>} />
-                    <Route exact path="/todos" render = {()=><Todos todos = {todos} onSubmit = {this.edit}/>} />
-                    <Route exact path="/newtodo" render = {(props)=><NewTodo {...props} onSubmit = {this.add}/>}/>
-                    <Route exact path = "/todos/:id/edit" render = {(props) => <EditTodo {...props} onSubmit = {this.edit} deleteTodo = {this.delete}  />} />
-                    <Route exact path="/calendar" render = {()=><Calendar/>} />
-                    <Route exact path="/articles" render = {(props)=><Articles {...props} articles = {articles}/>} />
-                </Switch>
-            </Router>
-        </div>
-    );
-  }
+                        <div className={!this.state.navBarExpanded ? "collapse navbar-collapse": "collapse navbar-collapse show"}  id="navbarColor02">
+                            <ul className="navbar-nav mr-auto">
+                                <NavItem>
+                                    <img src ={logo} />
+                                </NavItem>
+                                <NavItem className = "nav-item">
+                                    <Link to="/" className = "nav-link headerFont">Dashboard</Link>
+                                </NavItem>
+                                <NavItem className = "nav-item">
+                                    <Link to="/contacts" className = "nav-link headerFont">Contacts</Link>
+                                </NavItem>
+                                <NavItem className = "nav-item">
+                                    <Link to="/todos" className = "nav-link headerFont">Todos</Link>
+                                </NavItem>
+                                <NavItem className = "nav-item">
+                                    <Link to="/articles" className = "nav-link headerFont">Articles</Link>
+                                </NavItem>
+                                <NavItem className = "nav-item">
+                                <NavLink className = "headerFont" href={logged_in ? sign_out_route:sign_in_route}>{logged_in ? "Sign Out" : "Sign In"}</NavLink>
+                                </NavItem>
+                            </ul>
+                        </div>
+                    </Nav>
+                    <Switch>
+                        <Route exact path="/contacts" render = {()=><Contacts contacts = {contacts}/>} />
+                        <Route exact path="/contacts/:id" render = {(props)=><ShowContact {...props} currentUser = {current_user_id} deleteContact = {this.delete}/>} />
+                        <Route exact path="/newcontact" render = {(props)=><NewContact {...props} onSubmit = {this.add}/>}/>
+                        <Route exact path = "/contacts/:id/edit" render = {(props) => <EditContact {...props} onSubmit = {this.edit}/>} />
+                        <Route exact path="/todos" render = {()=><Todos todos = {todos} onSubmit = {this.edit}/>} />
+                        <Route exact path="/newtodo" render = {(props)=><NewTodo {...props} onSubmit = {this.add}/>}/>
+                        <Route exact path = "/todos/:id/edit" render = {(props) => <EditTodo {...props} onSubmit = {this.edit} deleteTodo = {this.delete}  />} />
+                        <Route exact path="/calendar" render = {()=><Calendar/>} />
+                        <Route exact path="/articles" render = {(props)=><Articles {...props} articles = {articles}/>} />
+                    </Switch>
+                </Router>
+            </div>
+        );
+    }
 }
