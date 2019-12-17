@@ -47,7 +47,6 @@ export default class Articles extends React.Component {
     const{articles, keyword} = this.state
     let articlesDisplay = articles.map((article, index) => {
       return (
-        <div key={index} className="flexPractice">
         <div key={index} className="articleFlexParent">
           <Card>
             <CardTitle><h3 style={{color:"white"}}>{article.title}</h3></CardTitle>
@@ -57,9 +56,10 @@ export default class Articles extends React.Component {
             </CardBody>
           </Card>
         </div>
-        </div>
       )
     })
+
+    
     return (
       <div>
         <Form inline>

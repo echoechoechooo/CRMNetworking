@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2019_12_17_114311) do
     t.string "strategy"
     t.text "followers_url"
     t.text "following_url"
-    t.string "tags", default: [], array: true
+    t.string "login"
     t.string "tags", default: ["technology"], array: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["provider"], name: "index_users_on_provider"

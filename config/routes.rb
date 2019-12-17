@@ -14,5 +14,6 @@ Rails.application.routes.draw do
     resources :contacts
     resources :todos
     put '/updateusertags', to: 'users#updatetags'
+    put '/updatecontacttags', to: 'contacts#updatetags'
     root to: 'pages#index'
 end
