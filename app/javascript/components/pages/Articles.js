@@ -43,6 +43,7 @@ export default class Articles extends React.Component {
       this.setState({keyword: value})
     }
 
+    
     render () {
     const{articles, keyword} = this.state
     let articlesDisplay = articles.map((article, index) => {
