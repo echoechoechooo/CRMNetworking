@@ -93,7 +93,7 @@ export default class MainApp extends React.Component {
             return response.json()
         })
         .then(output => {
-            this.setState({articles: output})
+            this.setState({articles: output.articles})
         })
     }
 
@@ -155,12 +155,12 @@ export default class MainApp extends React.Component {
 
   render () {
     const { logged_in,sign_in_route, sign_out_route, current_user_id, current_user } = this.props
-    const {contacts, todos, height, width, articles} = this.state
+    const {contacts, todos, width, articles} = this.state
     return (
         <div>
             <Router>
                 <Switch>
-                    <Route exact path="/" render = {()=><Dashboard contacts = {contacts} todos = {todos} width = {width}/>} />
+                    <Route exact path="/" render = {()=><Dashboard contacts = {contacts} todos = {todos} width = {width} articles = {articles}/>} />
                 </Switch>
                 <Nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor: "#0E0426"}}>
                     <button className={this.state.navBarExpanded ? "navbar-toggler": "navbar-toggler collapsed"} type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded={this.state.navBarExpanded} aria-label="Toggle navigation" onClick = {this.openNavbar}>
@@ -199,7 +199,7 @@ export default class MainApp extends React.Component {
                     <Route exact path="/newtodo" render = {(props)=><NewTodo {...props} onSubmit = {this.add}/>}/>
                     <Route exact path = "/todos/:id/edit" render = {(props) => <EditTodo {...props} onSubmit = {this.edit} deleteTodo = {this.delete}  />} />
                     <Route exact path="/calendar" render = {()=><Calendar/>} />
-                    <Route exact path="/articles" render = {()=><Articles {...props} articles = {articles}/>} />
+                    <Route exact path="/articles" render = {(props)=><Articles {...props} articles = {articles}/>} />
                 </Switch>
             </Router>
         </div>

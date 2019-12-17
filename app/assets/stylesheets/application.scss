@@ -355,6 +355,78 @@ body:before {
   box-shadow: 1px -1px 0 black, 3px 2px 3px var(--color-6), -3px -2px 3px var(--color-6), -1px -2px 0 white
 }
 
+.articlesTable{
+  position: absolute;
+  background: var(--color-4);
+  width: 60%;
+  height: inherit;
+  // border: 2px solid white;
+  border-radius: 5%;
+  border-collapse: unset;
+  overflow-x: auto;
+  display: flex;
+  box-shadow: 1px -1px 0 black, 3px 2px 3px var(--color-6), -3px -2px 3px var(--color-6), -1px -2px 0 white;
+  margin-left: 5%
+}
+
+.sideArticlesTable{
+  position: absolute;
+  background: var(--color-4);
+  width: 25%;
+  height: inherit;
+  // border: 2px solid white;
+  border-radius: 5%;
+  border-collapse: unset;
+  // overflow-x: auto;
+  box-shadow: 1px -1px 0 black, 3px 2px 3px var(--color-6), -3px -2px 3px var(--color-6), -1px -2px 0 white;
+  margin-left: 70%
+}
+
+.sideArticleHeader {
+  font-size: 24px;
+  padding: 20px 0px 10px 0px;
+  color: white; 
+  letter-spacing: 0.1em;
+  text-align: center;
+  width: 25%;
+  position: absolute;
+  margin-left: 70%
+}
+
+.articleFlex{
+  margin-top: 75px
+}
+
+.tagsWrapper {
+  margin-top: 75px;
+  // width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  overflow-y: auto
+}
+
+.tagFlexItem {
+  flex: auto;
+  border: 5px solid transparent;
+  border-radius: 2%;
+  height: 50px;
+  min-width: 33%;
+  // padding-left: 2.5%;
+  // padding-right: 2.5%
+}
+
+.articleHeader {
+  font-size: 24px;
+  padding: 20px 0px 10px 0px;
+  color: white; 
+  letter-spacing: 0.1em;
+  text-align: center;
+  width: 60%;
+  position: absolute;
+  margin-left: 5%
+}
+
 .contactTable tbody{
   display:block;
   overflow:auto;
@@ -423,7 +495,14 @@ body:before {
 }
 
 .articlesWidget{
-  width: 70%
+  width: 100%
+}
+
+.sideArticlesWidget{
+  // width: 20%;
+  margin-left: 70%;
+  position: relative;
+  margin-right: 5%
 }
 
 .firstSpacing{
@@ -439,7 +518,8 @@ body:before {
 }
 
 .widget{
-  height: 300px
+  height: 300px;
+  // border: 1px solid white
 }
 
 @media only screen and (max-width: 1000px){
@@ -453,10 +533,6 @@ body:before {
   
   .calendarParent{
     width: 90%;
-  }
-  
-  .articlesWidget{
-    width: 90%
   }
   
   .endSpacing{
@@ -543,6 +619,15 @@ body:before {
     margin-right: -4px;
   }
   
+  .flexPractice {
+    width: 300px;
+    height: 300px;
+    color: white;
+    flex: auto;
+    border: 1px solid white;
+    border-radius: 2%;
+    min-width: 33%
+  }
   
   /* Flex */
   .flex {
@@ -559,13 +644,15 @@ body:before {
   .flex-item {
     flex: 0 0 auto;
     width: 250px;
-    margin-right: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
     border: 1px solid white;
     border-radius: 2%;
+    height: 90%;
   }
 
   .articleThumbnail {
-      height: 60%;
+      max-width: 35%;
       float: right;
       border-radius: 3%;
   }
@@ -573,11 +660,12 @@ body:before {
   .articleTitle{
     font-family: 'houseonmars';
     font-size: 18px;
-    letter-spacing: 0.1em;
+    letter-spacing: 2px;
     color: white;
     white-space: normal;
     height: 60%;
     margin-bottom: 0px;
+    font-size: 16px;
   }
 
   .tagFlex {
@@ -605,8 +693,9 @@ body:before {
     border: 5px solid var(--color-6);
     border-radius: 5%;
     background-color: var(--color-6);
-    margin-top: 20px;
-    margin-left: 10px
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto
   }
 
   .buttonBottom {
