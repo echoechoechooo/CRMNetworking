@@ -384,13 +384,55 @@ body:before {
 
 .sideArticleHeader {
   font-size: 24px;
-  padding: 20px 0px 10px 0px;
+  padding-top: 20px;
   color: white; 
   letter-spacing: 0.1em;
   text-align: center;
   width: 25%;
   position: absolute;
   margin-left: 70%
+}
+
+.sideArticleButton {
+  font-size: 24px;
+  padding-top: 260px;
+  color: white; 
+  letter-spacing: 0.1em;
+  text-align: center;
+  width: 25%;
+  position: absolute;
+  margin-left: 70%
+}
+
+.addTagButtonParent {
+  font-size: 24px;
+  margin-top: 255px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  width: 25%;
+  position: absolute;
+  margin-left: 70%;
+}
+
+.addTagButton {
+  color: white;
+  background: var(--success);
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  // padding: 5px 10px 5px 10px;
+  border-radius: 5%;
+}
+
+.addTagPlus {
+  margin-top: 20px;
+  margin-left: 92%;
+  position: absolute
+}
+
+.addTagsImage {
+  width: 24px;
+  height: 24px;
 }
 
 .articleFlex{
@@ -416,11 +458,18 @@ body:before {
 .tagFlexItem {
   flex: auto;
   border: 5px solid transparent;
-  border-radius: 2%;
   height: 50px;
   min-width: 33%;
-  // padding-left: 2.5%;
-  // padding-right: 2.5%
+  background: transparent
+}
+
+.addTagFlexItem {
+  flex: auto;
+  height: 50px;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 90%;
 }
 
 .articleHeader {
@@ -675,6 +724,7 @@ body:before {
     height: 60%;
     margin-bottom: 0px;
     font-size: 16px;
+    display: block
   }
 
   .tagFlex {

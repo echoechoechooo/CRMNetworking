@@ -24,6 +24,10 @@ class ContactsController < ApplicationController
     def update
         @contact = current_user.contacts.find params[:id]
         @contact.update_attributes(contact_params)
+        # below block was used in postman...postman unable to process authenticate_user and therefore current_user
+        # @contact = Contact.find_by_id(params[:id])
+        @contact.tags = params[:contact][:tags]
+        @contact.save
         render json: @contact, status: 201
     end
 
