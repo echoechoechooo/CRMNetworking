@@ -47,6 +47,46 @@
   font-style: normal;
 }
 
+.card{
+  position:relative;
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+  -webkit-box-orient:vertical;
+  -webkit-box-direction:normal;
+  -ms-flex-direction:column;
+  flex-direction:column;
+  min-width:0;
+  word-wrap:break-word;
+  background-color:black;
+  background-clip:border-box;
+  border:1px solid rgba(0,0,0,0.125);
+  height: 100%;
+  margin-left: 10%;
+  width: 80%
+}
+
+.flexArticles {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flexPractice {
+  color: white;
+  background-color: black;
+  flex: auto;
+  border: 1px solid white;
+  border-radius: 2%;
+  min-width: 33%;
+  width: 300px;
+  margin-top: 20px
+}
+
+.searchForm {
+  width: 100%;
+  margin: auto;
+}
+
 .react-calendar {
   width: 350px;
   max-width: 100%;
