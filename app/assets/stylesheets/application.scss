@@ -414,10 +414,8 @@ body:before {
   background: var(--color-4);
   width: 25%;
   height: inherit;
-  // border: 2px solid white;
   border-radius: 5%;
   border-collapse: unset;
-  // overflow-x: auto;
   box-shadow: 1px -1px 0 black, 3px 2px 3px var(--color-6), -3px -2px 3px var(--color-6), -1px -2px 0 white;
   margin-left: 70%
 }
@@ -446,12 +444,13 @@ body:before {
 
 .addTagButtonParent {
   font-size: 24px;
-  margin-top: 255px;
+  // margin-top: 255px;
   letter-spacing: 0.1em;
   text-align: center;
-  width: 25%;
-  position: absolute;
-  margin-left: 70%;
+  // width: 25%;
+  // position: absolute;
+  // margin-left: 70%;
+  flex: 1
 }
 
 .addTagButton {
@@ -464,9 +463,25 @@ body:before {
   border-radius: 5%;
 }
 
+.deleteTagButton {
+  color: white;
+  background: var(--danger);
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  // padding: 5px 10px 5px 10px;
+  border-radius: 5%;
+}
+
 .addTagPlus {
   margin-top: 20px;
-  margin-left: 92%;
+  margin-left: 91.5%;
+  position: absolute
+}
+
+.deleteTagPlus {
+  margin-top: 14px;
+  margin-left: 71%;
   position: absolute
 }
 
@@ -475,17 +490,29 @@ body:before {
   height: 24px;
 }
 
+.deleteTagsImage {
+  width: 36px;
+  height: 36px;
+}
+
 .articleFlex{
   margin-top: 75px
 }
 
 .tagsWrapper {
-  margin-top: 75px;
+  margin-top: 60px;
   // width: 100%;
   display: flex;
   flex-wrap: wrap;
-  height: auto;
-  overflow-y: auto
+  height: 180px;
+  overflow-y: scroll
+}
+
+.buttonTagsWrapper {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 50px;
 }
 
 .articleTagsWrapper {
@@ -497,7 +524,7 @@ body:before {
 
 .tagFlexItem {
   flex: auto;
-  border: 5px solid transparent;
+  border: 0px solid transparent;
   height: 50px;
   min-width: 33%;
   background: transparent
@@ -789,12 +816,30 @@ body:before {
     white-space: normal;
     text-align: center;
     margin-bottom: 0px;
-    border: 5px solid var(--color-6);
     border-radius: 5%;
     background-color: var(--color-6);
+    border: 3px solid var(--color-6);
     width: fit-content;
     margin-left: auto;
-    margin-right: auto
+    margin-right: auto;
+    padding: 5px
+  }
+
+  .tagTitleSelected {
+    font-family: 'houseonmars';
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: white;
+    white-space: normal;
+    text-align: center;
+    margin-bottom: 0px;
+    border-radius: 5%;
+    background-color: var(--color-6);
+    border: 3px solid white;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px
   }
 
   .buttonBottom {
