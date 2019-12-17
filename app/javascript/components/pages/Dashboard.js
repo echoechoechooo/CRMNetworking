@@ -25,9 +25,9 @@ export default class Dashboard extends React.Component {
           body: JSON.stringify(current_user)
       }).then(response => {
           if(response.status === 201){
-            console.log(current_user)
+            this.setState({newTag: "", addingTag: false})
+            this.props.fetchArticles()
           }
-          this.setState({newTag: "", addingTag: false})
       })
     }
 
@@ -117,8 +117,12 @@ export default class Dashboard extends React.Component {
         })
         let articleList = null
         if(Object.keys(articles).length > 0) {
-          console.log(Object.keys(articles).map(key => articles[key]).reduce((arr, e) => arr.concat(e)))
-          articleList = Object.keys(articles).map(key => articles[key]).reduce((arr, e) => arr.concat(e))
+          // console.log(Object.keys(articles).map(key => articles[key]).reduce((arr, e) => arr.concat(e)))
+          // if(Object.keys(articles).length > 1){
+          //   // console.log(articles["technology"])
+          //   console.log(articles, Object.keys(articles), Object.keys(articles).map(key => articles[key]))
+          // }
+          articleList = Object.values(articles).reduce((arr, e) => arr.concat(e))
           .map((article, dex) => {
             return (
               <div href = {article.url} key = {dex} className="articleFlex">

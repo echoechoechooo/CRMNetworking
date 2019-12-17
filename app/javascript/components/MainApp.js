@@ -91,43 +91,65 @@ export default class MainApp extends React.Component {
             return
         }
         // var url = 'https://newsapi.org/v2/top-headlines?' + 'country=us&' +  'apiKey=25ad034c5f0c45f8bf67762c1aa42371'
-        var url = 'https://newsapi.org/v2/everything?' +
-          `q=${this.props.current_user.tags[0]}&` +
-          'from=2019-12-17&' +
-          'sortBy=popularity&' +
-          'apiKey=25ad034c5f0c45f8bf67762c1aa42371';
-        fetch(url)
-        .then(response => {
-            return response.json()
-        })
-        .then(output => {
-            let a = output.articles
-            for(let i = 0; i < a.length; i++){
-                a[i]["tag"] = this.props.current_user.tags[0]
-            }
-            let {articles} = this.state
-            articles[this.props.current_user.tags[0]] = a
-            this.setState({articles})
-        })
+        let tags = this.props.current_user.tags
+        for(let i = 0; i < tags.length; i++){
+            var url = 'https://newsapi.org/v2/everything?' +
+            `q=${tags[i]}&` +
+            'from=2019-12-17&' +
+            'sortBy=popularity&' +
+            'apiKey=25ad034c5f0c45f8bf67762c1aa42371';
+            fetch(url)
+            .then(response => {
+                return response.json()
+            })
+            .then(output => {
+                let a = output.articles
+                for(let j = 0; j < a.length; j++){
+                    a[j]["tag"] = tags[i]
+                }
+                let {articles} = this.state
+                articles[tags[i]] = a
+                this.setState({articles})
+                // console.log(this.state.articles)
+            })
+        }
+        // var url = 'https://newsapi.org/v2/everything?' +
+        //   `q=${this.props.current_user.tags[0]}&` +
+        //   'from=2019-12-17&' +
+        //   'sortBy=popularity&' +
+        //   'apiKey=25ad034c5f0c45f8bf67762c1aa42371';
+        // fetch(url)
+        // .then(response => {
+        //     return response.json()
+        // })
+        // .then(output => {
+        //     let a = output.articles
+        //     for(let i = 0; i < a.length; i++){
+        //         a[i]["tag"] = this.props.current_user.tags[0]
+        //     }
+        //     let {articles} = this.state
+        //     articles[this.props.current_user.tags[0]] = a
+        //     this.setState({articles})
+        // })
 
-        var url = 'https://newsapi.org/v2/everything?' +
-          `q=${this.props.current_user.tags[1]}&` +
-          'from=2019-12-17&' +
-          'sortBy=popularity&' +
-          'apiKey=25ad034c5f0c45f8bf67762c1aa42371';
-        fetch(url)
-        .then(response => {
-            return response.json()
-        })
-        .then(output => {
-            let a = output.articles
-            for(let i = 0; i < a.length; i++){
-                a[i]["tag"] = this.props.current_user.tags[1]
-            }
-            let {articles} = this.state
-            articles[this.props.current_user.tags[1]] = a
-            this.setState({articles})
-        })
+        // var url = 'https://newsapi.org/v2/everything?' +
+        //   `q=${this.props.current_user.tags[1]}&` +
+        //   'from=2019-12-17&' +
+        //   'sortBy=popularity&' +
+        //   'apiKey=25ad034c5f0c45f8bf67762c1aa42371';
+        // fetch(url)
+        // .then(response => {
+        //     return response.json()
+        // })
+        // .then(output => {
+        //     let a = output.articles
+        //     for(let i = 0; i < a.length; i++){
+        //         a[i]["tag"] = this.props.current_user.tags[1]
+        //     }
+        //     let {articles} = this.state
+        //     articles[this.props.current_user.tags[1]] = a
+        //     this.setState({articles})
+        // })
     }
 
     add = (attrs, type) => {
@@ -193,7 +215,7 @@ export default class MainApp extends React.Component {
             <div>
                 <Router>
                     <Switch>
-                        <Route exact path="/" render = {()=><Dashboard contacts = {contacts} todos = {todos} width = {width} articles = {articles} current_user = {current_user} />} />
+                        <Route exact path="/" render = {()=><Dashboard contacts = {contacts} todos = {todos} width = {width} articles = {articles} current_user = {current_user} fetchArticles = {this.fetchArticles} />} />
                     </Switch>
                     <Nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor: "#0E0426"}}>
                         <button className={this.state.navBarExpanded ? "navbar-toggler": "navbar-toggler collapsed"} type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded={this.state.navBarExpanded} aria-label="Toggle navigation" onClick = {this.openNavbar}>
