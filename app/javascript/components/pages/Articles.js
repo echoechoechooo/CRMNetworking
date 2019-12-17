@@ -48,6 +48,7 @@ export default class Articles extends React.Component {
     let articlesDisplay = articles.map((article, index) => {
       return (
         <div key={index} className="flexPractice">
+        <div key={index} className="articleFlexParent">
           <Card>
             <CardTitle><h3 style={{color:"white"}}>{article.title}</h3></CardTitle>
             <CardImg top width="100%" src={article.urlToImage} alt="Card image cap" />
