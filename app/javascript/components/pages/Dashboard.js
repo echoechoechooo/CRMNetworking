@@ -6,6 +6,7 @@ import Calendar from 'react-calendar';
 import addButton from "../../images/plusButton.png"
 import "../CalendarAlt.css"
 import bird from "./bird.jpg"
+import {getCompanySite, getArticleTitle} from "../GetArticleInfo"
 
 export default class Dashboard extends React.Component {
     state = {
@@ -78,8 +79,13 @@ export default class Dashboard extends React.Component {
           return (
             <div key = {dex} className="articleFlex">
               <div className="flex-item">
-                <img className = "articleThumbnail" src = {article.urlToImage} />
-                <h1 className = "articleTitle">{article.title}</h1>
+                <img className = "articleThumbnail" src = {`//logo.clearbit.com/${getCompanySite(article)}`} />
+                <h1 className = "articleTitle">{getArticleTitle(article)}</h1>
+                <div className = "articleTagsWrapper">
+                  <div className = "tagFlexItem">
+                    <h1 className = "tagTitle">Nature</h1>
+                  </div>
+                </div>
               </div>
             </div>
           )
