@@ -35,7 +35,7 @@ export default class Articles extends React.Component {
         })
         .then(output => {
           this.setState({articles: output.articles})
-      }); console.log(url)
+      }); 
     }
 
     onChange = (e) => {
@@ -46,6 +46,7 @@ export default class Articles extends React.Component {
 
     render () {
     const{articles, keyword} = this.state
+    const{contacts} = this.props
     let articlesDisplay = articles.map((article, index) => {
       return (
         <div key={index} className="articleFlexParent">
@@ -54,10 +55,21 @@ export default class Articles extends React.Component {
             <CardImg top width="99%" src={article.urlToImage} alt="Card image cap" />
             <CardBody>
               <CardText>{article.description}</CardText>
+              <Button href = {article.url} target = "_blank">Read More</Button>
             </CardBody>
           </Card>
         </div>
       )
+    })
+    let contactsTagged = contacts.map((contact, index) => {
+      if(contact.tags.includes(keyword)){
+        console.log(keyword)
+        return (
+          <div key={index}>
+            <h3>{contact.first_name} {contact.last_name} {contact.email}</h3>
+          </div>
+          )
+      }
     })
     return (
       <div>
@@ -66,6 +78,9 @@ export default class Articles extends React.Component {
             <Label for="newsKeyword" className="mr-sm-2">Search News</Label>
             <Input onChange = {this.onChange} value={keyword} type="keyword" name="keyword" id="keyword" placeholder="Search" />
           </FormGroup>
+          <div>
+            {contactsTagged}
+          </div>
           <Button onClick={this.articlesKeyword}>Submit</Button>
         </Form>
         <div className = "flexArticles">
