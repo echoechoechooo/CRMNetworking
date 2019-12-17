@@ -87,6 +87,14 @@ export default class MainApp extends React.Component {
     }
 
     fetchArticles = () => {
+        var url = 'https://newsapi.org/v2/top-headlines?' + 'country=us&' +  'apiKey=25ad034c5f0c45f8bf67762c1aa42371'
+        fetch(url)
+        .then(response => {
+            return response.json()
+        })
+        .then(output => {
+            this.setState({articles: output.articles})
+        })
         if(this.props.current_user == null){
             return
         }
@@ -110,46 +118,8 @@ export default class MainApp extends React.Component {
                 let {articles} = this.state
                 articles[tags[i]] = a
                 this.setState({articles})
-                // console.log(this.state.articles)
             })
         }
-        // var url = 'https://newsapi.org/v2/everything?' +
-        //   `q=${this.props.current_user.tags[0]}&` +
-        //   'from=2019-12-17&' +
-        //   'sortBy=popularity&' +
-        //   'apiKey=25ad034c5f0c45f8bf67762c1aa42371';
-        // fetch(url)
-        // .then(response => {
-        //     return response.json()
-        // })
-        // .then(output => {
-        //     let a = output.articles
-        //     for(let i = 0; i < a.length; i++){
-        //         a[i]["tag"] = this.props.current_user.tags[0]
-        //     }
-        //     let {articles} = this.state
-        //     articles[this.props.current_user.tags[0]] = a
-        //     this.setState({articles})
-        // })
-
-        // var url = 'https://newsapi.org/v2/everything?' +
-        //   `q=${this.props.current_user.tags[1]}&` +
-        //   'from=2019-12-17&' +
-        //   'sortBy=popularity&' +
-        //   'apiKey=25ad034c5f0c45f8bf67762c1aa42371';
-        // fetch(url)
-        // .then(response => {
-        //     return response.json()
-        // })
-        // .then(output => {
-        //     let a = output.articles
-        //     for(let i = 0; i < a.length; i++){
-        //         a[i]["tag"] = this.props.current_user.tags[1]
-        //     }
-        //     let {articles} = this.state
-        //     articles[this.props.current_user.tags[1]] = a
-        //     this.setState({articles})
-        // })
     }
 
     add = (attrs, type) => {
