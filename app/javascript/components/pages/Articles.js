@@ -43,15 +43,16 @@ export default class Articles extends React.Component {
       this.setState({keyword: value})
     }
 
-    
+
     render () {
     const{articles, keyword} = this.state
     let articlesDisplay = articles.map((article, index) => {
       return (
         <div key={index} className="articleFlexParent">
+          
           <Card>
             <CardTitle><h3 style={{color:"white"}}>{article.title}</h3></CardTitle>
-            <CardImg top width="100%" src={article.urlToImage} alt="Card image cap" />
+            <CardImg top width="99%" src={article.urlToImage} alt="Card image cap" />
             <CardBody>
               <CardText>{article.description}</CardText>
             </CardBody>
