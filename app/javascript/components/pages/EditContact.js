@@ -30,7 +30,8 @@ export default class EditContact extends React.Component {
             email_address: "",
             phone_number: "",
             notes: "",
-            login: ""
+            login: "",
+            tags: []
         },
         editSuccess: false
     }
