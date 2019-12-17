@@ -57,6 +57,7 @@ export default class Articles extends React.Component {
             </CardBody>
           </Card>
         </div>
+        </div>
       )
     })
     return (
