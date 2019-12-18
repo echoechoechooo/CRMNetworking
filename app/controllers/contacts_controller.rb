@@ -31,13 +31,6 @@ class ContactsController < ApplicationController
         render json: @contact, status: 201
     end
 
-    def updatetags
-        contact = Contact.find_by_id(params[:id])
-        contact.tags = params[:tags]
-        contact.save
-        render json: user, status: 201
-    end
-
     def destroy
         @contact = current_user.contacts.find params[:id]
         if @contact.destroy
