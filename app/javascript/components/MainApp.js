@@ -120,15 +120,24 @@ export default class MainApp extends React.Component {
         })
     }
 
+    getTodaysDate = () => {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+        return `${yyyy}-${mm}-${dd}`
+    }
+
     fetchArticles = () => {
         if(this.props.current_user == null){
             return
         }
         let tags = this.props.current_user.tags
+        this.setState({articles: {}})
         for(let i = 0; i < tags.length; i++){
             var url = 'https://newsapi.org/v2/everything?' +
             `q=${tags[i]}&` +
-            'from=2019-12-17&' +
+            `from=${this.getTodaysDate()}&` +
             'sortBy=popularity&' +
             'apiKey=25ad034c5f0c45f8bf67762c1aa42371';
             fetch(url)
@@ -203,6 +212,13 @@ export default class MainApp extends React.Component {
         this.setState({navBarExpanded: !this.state.navBarExpanded})
     }
 
+    closeNavBar = () => {
+        const {navBarExpanded} = this.state
+        if(navBarExpanded){
+            this.setState({navBarExpanded: false})
+        }
+    }
+
     render () {
         const { logged_in,sign_in_route, sign_out_route, current_user_id, current_user } = this.props
         const {contacts, todos, width, articles} = this.state
@@ -225,16 +241,16 @@ export default class MainApp extends React.Component {
                                         <img src ={logo} />
                                     </NavItem>
                                     <NavItem className = "nav-item">
-                                        <Link to="/" className = "nav-link headerFont">Dashboard</Link>
+                                        <Link onClick = {this.closeNavBar} to="/" className = "nav-link headerFont">Dashboard</Link>
                                     </NavItem>
                                     <NavItem className = "nav-item">
-                                        <Link to="/contacts" className = "nav-link headerFont">Contacts</Link>
+                                        <Link onClick = {this.closeNavBar} to="/contacts" className = "nav-link headerFont">Contacts</Link>
                                     </NavItem>
                                     <NavItem className = "nav-item">
-                                        <Link to="/todos" className = "nav-link headerFont">Todos</Link>
+                                        <Link onClick = {this.closeNavBar} to="/todos" className = "nav-link headerFont">Todos</Link>
                                     </NavItem>
                                     <NavItem className = "nav-item">
-                                        <Link to="/articles" className = "nav-link headerFont">Articles</Link>
+                                        <Link onClick = {this.closeNavBar} to="/articles" className = "nav-link headerFont">Articles</Link>
                                     </NavItem>
                                     <NavItem className = "nav-item">
                                     <NavLink className = "headerFont" href={logged_in ? sign_out_route:sign_in_route}>{logged_in ? "Sign Out" : "Sign In"}</NavLink>

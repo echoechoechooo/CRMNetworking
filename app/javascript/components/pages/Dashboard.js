@@ -106,6 +106,10 @@ export default class Dashboard extends React.Component {
         </div>)
     }
 
+    hasName = (name) => {
+      return name != null && name.length > 0
+    }
+
     render () {
         const{contacts, todos, width, articles, current_user} = this.props
         let tags = current_user.tags
@@ -114,7 +118,7 @@ export default class Dashboard extends React.Component {
             return (
                 <tr key = {contact.id} className={dex == 0 ? "tableRowTop" : "tableRow"}>
                     <td style={{padding: "0px 0px 0px 0px"}}>
-                        <Link to = {`/contacts/${contact.id}`} style={{fontSize: "20px", padding: "0px 0px 0px 10px", color: "white"}}>{contact.first_name} {contact.last_name}</Link>
+                        <Link to = {`/contacts/${contact.id}`} style={{fontSize: "20px", padding: "0px 0px 0px 10px", color: "white"}}>{this.hasName(contact.first_name) ? `${contact.first_name} ${contact.last_name}` : contact.login}</Link>
                         <h3 style={{fontSize: "12px", padding: "0px 0px 0px 10px", color: "white"}}>{contact.industry != null & contact.industry != "" ? contact.industry: contact.first_name != null & contact.first_name != "" ? `Connect with ${contact.first_name}!`: `Connect with ${contact.login}!`}</h3>
                     </td>
                 </tr>)
@@ -206,6 +210,11 @@ export default class Dashboard extends React.Component {
                   </thead>
                   <tbody className="sidebar">
                     {contactList}
+                    <tr className="tableRow" style={{borderColor: "transparent", backgroundColor: "transparent", marginTop: "5%", marginLeft: "35%", marginRight: "35%"}}>
+                      <td style={{width: "30%"}}>
+                        <Link to = {"/newcontact"} className = "headerFont addTagButton linkButton">Add</Link>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -215,7 +224,7 @@ export default class Dashboard extends React.Component {
               
               <div className = "firstSpacing widget"/>
               
-              <div className = "sideWidget widget">
+              <div className = "sideWidget widget todosWidget">
                 <table className="contactTable table-hover">
                   <thead>
                     <tr>
@@ -224,6 +233,11 @@ export default class Dashboard extends React.Component {
                   </thead>
                   <tbody>
                     {todoList}
+                    <tr className="tableRow" style={{borderColor: "transparent", backgroundColor: "transparent", marginTop: "5%", marginLeft: "35%", marginRight: "35%"}}>
+                      <td style={{width: "30%"}}>
+                        <Link to = {"/newtodo"} className = "headerFont addTagButton linkButton">Add</Link>
+                      </td>
+                    </tr>
                   </tbody>
                 </table> 
               </div>
@@ -259,14 +273,8 @@ export default class Dashboard extends React.Component {
                       </div>
                     </div>
                   </div>
-                  <h1 className = "sideArticleHeader headerFont">Tags</h1>
+                  <h1 className = "sideArticleHeader headerFont">Interests</h1>
                   {!addingTag && false ? null : <div className = "addTagButtonParent"><button onClick = {this.addTag} className = "headerFont addTagButton">Add</button></div>}
-                  {/* <div className = "addTagPlus">
-                    <img onClick = {this.changeAddTagState} src = {addButton} className = "addTagsImage"/>
-                  </div>
-                  <div className = "deleteTagPlus">
-                    <img onClick = {this.changeAddTagState} src = {deleteButton} className = "deleteTagsImage"/>
-                  </div> */}
                 </div>
             </div>
             </div>

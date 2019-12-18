@@ -8,45 +8,41 @@
 <div style="text-align:center; margin-top:50px; margin-left">
 
 <div style="margin-top:50px">
-<h1 style="
-color:white; 
-font-family: 'houseonmars';
-src: url('house_on_mars-webfont.woff2') format('woff2'),
-url('house_on_mars-webfont.woff') format('woff');
-font-style: normal;
-font-weight: normal;
-text-shadow: 2px 2px 5px #42f5e6;
-font-size: 40px"
->Log in</h1>
+  <h1 style="
+  color:white; 
+  font-family: 'houseonmars';
+  src: url('house_on_mars-webfont.woff2') format('woff2'),
+  url('house_on_mars-webfont.woff') format('woff');
+  font-style: normal;
+  font-weight: normal;
+  text-shadow: 2px 2px 5px #42f5e6;
+  font-size: 40px"
+  >Log in</h1>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field" style = "color:white">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    <div class="field" style = "color:white">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <% if devise_mapping.rememberable? %>
+      <div class="field" style = "color:white">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit "Log in" %>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-
-  <div class="mb-6">
-    <%= link_to "Sign in with GitHub", user_github_omniauth_authorize_path, class: "btn bg-blue-500 text-white w-full block text-center" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
 </div>
 
     <div style="margin-top:50px;">
