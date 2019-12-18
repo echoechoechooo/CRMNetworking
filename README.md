@@ -5,9 +5,9 @@
 2. <a href="#2-skills-acquired">Skills acquired</a>
 3. <a href="#3-technology">Technology</a>
 4. <a href="#4-features">User Stories</a>
-5. <a href="#5-how-to-use">How to use</a>
-6. <a href="#6-screenshots">Screenshots</a>
-7. <a href="#7-credits">Credits</a>
+5. <a href="#5-deployed-app">Deployed App</a>
+6. <a href="#6-getting-started">Getting Started</a>
+
 
 ## 1. Purpose
 
@@ -46,13 +46,14 @@ Today, Echo Net has been deployed, and the team is continuing to add features th
 - As a user, once signed in, I can create, view, edit or delete to-do list items. 
 - As a user logged in via Github, I can pull in my followers and following accounts as contacts.
 
-## 5. How to use
+## 5. Deployed App
 
 The app is deployed and available at the following URL:
 
 [https://cryptic-forest-67187.herokuapp.com/](https://cryptic-forest-67187.herokuapp.com/)
 
-## 6. Screenshots
-
-## 7. Credits
+## 6. Getting Started
+- Get a master key from your developer and add it to your Config folder.
+- Run your gemfiles via $bundle install
+- Run your database via $rails db:create
 
