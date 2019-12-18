@@ -45,10 +45,7 @@ export default class NewContact extends React.Component {
     localSubmit = () => {
         const{onSubmit} = this.props
         const{form} = this.state
-        if(form.first_name.length===0){
-            return
-        }
-        if(form.last_name.length===0){
+        if(form.first_name.length===0 && form.login.length ===0){
             return
         }
         onSubmit(form, "contacts").then(() => {
