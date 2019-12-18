@@ -54,9 +54,9 @@ export default class ShowContact extends React.Component {
                     <div>{currentContact.industry}</div>
                     <div>{currentContact.email_address}</div>
                     <div>{currentContact.phone_number}</div>
-                    <div><a href = {`http://github.com/${currentContact.login}`} style={{color:"white"}}>github.com/{currentContact.login}</a></div>
+                    <div><a href = {`http://github.com/${currentContact.login}`} target = "_blank" style={{color:"white"}}>github.com/{currentContact.login}</a></div>
                     <div>Notes: {currentContact.notes}</div>
-                    <div>Tags: {currentContact.tags}</div>
+                    <div>Interests: {currentContact.tags.join(', ')}</div>
                 </div>
                 <br />
                 {currentUser != currentContact.user_id ? null :

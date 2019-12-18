@@ -168,7 +168,7 @@ getCurrentContact = () => {
 
                 <div className="form-group">
                   <div>
-                    <label className="col-form-label label-color" for="inputDefault">Tags</label>
+                    <label className="col-form-label label-color" for="inputDefault">Interests</label>
                     <img onClick = {this.changeAddTagState} src = {addButton} style={{width:"25px", height:"25px"}}/>
                   </div>
                   
@@ -181,7 +181,7 @@ getCurrentContact = () => {
                 {!addingTag ? null: <div className="form-group">
                   <div className = "flexTagSearch">
                     <input name="newTag" value={newTag} type="text" className="form-control" placeholder="Tag" id="inputDefault" onChange = {this.onTagChange} />
-                    <button onClick={this.addTag} className="btn btn-danger">Submit</button>
+                    <button onClick={this.addTag} className="btn btn-danger">Add</button>
                   </div>
                 </div>}
 
