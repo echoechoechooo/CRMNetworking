@@ -862,16 +862,25 @@ body:before {
     min-width: 20%;
   }
   
-  div.polaroid {
-    background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  .polaroid {
+    background-color: var(--color-4);
     flex: 1;
-    min-width: 40%;
     height: auto;
     margin-bottom: 100px;
     margin-right: 5%;
     margin-left: 5%;
-    border-radius: 10%
+    border-radius: 10%;
+    box-shadow: 2px -3px 3px var(--color-6), 2px 3px 3px var(--color-6), -2px 3px 3px var(--color-6), -2px -3px 3px var(--color-6)
+  }
+
+  .flexWidth{
+    min-width: 40%;
+  }
+
+  @media only screen and (max-width: 950px){
+    .flexWidth {
+      min-width: 50%
+    }
   }
 
   .userBioParent {
@@ -880,19 +889,31 @@ body:before {
   }
 
   .userBio{
-    width: 70%;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 3%
   }
 
   .userPic {
-    width: 80%;
-    border-radius: 5%
+    width: 70%;
+    border-radius: 50%;
+    box-shadow: 2px -2px 2px var(--color-6), 2px 2px 2px var(--color-6), -2px 2px 2px var(--color-6), -2px -2px 2px var(--color-6)
+  }
+
+  .userName{
+    color: white;
+    margin-top: 10px;
+    font-family: 'houseonmars';
+    text-shadow: 2px 2px 5px var(--color-1);
   }
 
   .userDescription{
-    font-size: 1rem
+    font-size: 1rem;
+    color: white;
+    font-family: 'houseonmars';
+    letter-spacing: 5px;
+    line-height: 1.3;
   }
   
   // .deleteTagButton {
