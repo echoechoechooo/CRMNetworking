@@ -251,7 +251,7 @@ export default class MainApp extends React.Component {
                             <Route exact path="/newtodo" render = {(props)=><NewTodo {...props} onSubmit = {this.add}/>}/>
                             <Route exact path = "/todos/:id/edit" render = {(props) => <EditTodo {...props} onSubmit = {this.edit} deleteTodo = {this.delete}  />} />
                             <Route exact path="/calendar" render = {()=><Calendar/>} />
-                            <Route exact path="/articles" render = {(props)=><Articles {...props} articles = {articles}/>} />
+                            <Route exact path="/articles" render = {(props)=><Articles {...props} articles = {articles} contacts = {contacts}/>} />
                         </Switch>
                     </Router>
                 </AlertProvider>
