@@ -852,14 +852,44 @@ body:before {
   }
   
   div.polaroid {
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    padding: 10px 20px;
-    width: 40%;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-bottom: 25px;
-    
+    flex: 1;
+    min-width: 40%;
+    height: auto;
+    margin-bottom: 100px;
+    margin-right: 5%;
+    margin-left: 5%;
+    border-radius: 10%
+  }
+
+  .userBioParent {
+    display: flex;
+    flex-wrap: wrap
+  }
+
+  .userBio{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%
+  }
+
+  .userPic {
+    width: 80%;
+    border-radius: 5%
+  }
+
+  .userDescription{
+    font-size: 1rem
   }
   
+  // .deleteTagButton {
+  //   color: white;
+  //   background: var(--danger);
+  //   margin-left: auto;
+  //   margin-right: auto;
+  //   width: fit-content;
+  //   // padding: 5px 10px 5px 10px;
+  //   border-radius: 5%;
+  // }
