@@ -850,6 +850,17 @@ body:before {
   .contactButton {
     width: 100%;
   }
+
+  .contactsTaggedParent {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .contactsTagged {
+    flex: auto;
+    height: 50px;
+    min-width: 20%;
+  }
   
   div.polaroid {
     background-color: white;
