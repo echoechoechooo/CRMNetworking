@@ -62,27 +62,30 @@ export default class Articles extends React.Component {
       )
     })
     let contactsTagged = contacts.map((contact, index) => {
-      if(contact.tags.includes(keyword)){
-        console.log(keyword)
+      if(contact.tags.includes(keyword.toLowerCase())){
         return (
-          <div key={index}>
-            <h3>{contact.first_name} {contact.last_name} {contact.email}</h3>
+          <div key={index} className="contactsTagged">
+            <h1 className="tagTitle">
+              {
+              contact.first_name != null && contact.last_name != null ? `${contact.first_name} ${contact.last_name}` : contact.login
+              }
+            </h1>
           </div>
-          )
+        )
       }
     })
     return (
       <div>
         <Form inline>
           <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-            <Label for="newsKeyword" className="mr-sm-2">Search News</Label>
+            {/* <Label for="newsKeyword" className="mr-sm-2"><h3 style={{color:"white"}}>Search News</h3></Label>*/}
             <Input onChange = {this.onChange} value={keyword} type="keyword" name="keyword" id="keyword" placeholder="Search" />
           </FormGroup>
-          <div>
-            {contactsTagged}
-          </div>
           <Button onClick={this.articlesKeyword}>Submit</Button>
         </Form>
+        <div className="contactsTaggedParent">
+          {contactsTagged}
+        </div>
         <div className = "flexArticles">
           {articlesDisplay}
         </div>
