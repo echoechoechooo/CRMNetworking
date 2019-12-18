@@ -78,7 +78,6 @@ export default class Articles extends React.Component {
       <div>
         <Form inline>
           <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-            {/* <Label for="newsKeyword" className="mr-sm-2"><h3 style={{color:"white"}}>Search News</h3></Label>*/}
             <Input onChange = {this.onChange} value={keyword} type="keyword" name="keyword" id="keyword" placeholder="Search" />
           </FormGroup>
           <Button onClick={this.articlesKeyword}>Submit</Button>
