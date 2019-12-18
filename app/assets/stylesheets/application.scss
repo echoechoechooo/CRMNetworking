@@ -66,6 +66,21 @@
   width: 80%
 }
 
+.flexTags {
+  display: flex;
+  flex-wrap: flex;
+  flex-direction: row;
+}
+
+.flexTagSearch {
+  display: flex;
+  flex-direction: row;
+}
+
+.tagSpacing {
+  margin: 5px;
+}
+
 .flexArticles {
   display: flex;
   flex-wrap: wrap;

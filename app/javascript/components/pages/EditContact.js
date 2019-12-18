@@ -15,6 +15,7 @@ import {
       ListGroup,
       ListGroupItem
      } from 'reactstrap'
+import addButton from "../../images/plusButton.png"
 
 
 export default class EditContact extends React.Component {
@@ -33,9 +34,13 @@ export default class EditContact extends React.Component {
             login: "",
             tags: []
         },
-        editSuccess: false
+        editSuccess: false,
+        addingTag: false,
+        newTag: ""
     }
   }
+
+changeAddTagState = () => this.setState({addingTag: !this.state.addingTag})
 
 getCurrentContact = () => {
     let id = this.props.match.params.id
@@ -56,6 +61,7 @@ getCurrentContact = () => {
             form["phone_number"] = contact.phone_number
             form["notes"] = contact.notes
             form["login"] = contact.login
+            form["tags"] = contact.tags
 
             Object.keys(form).map(key => {
                 if(form[key] == null){
@@ -72,6 +78,17 @@ getCurrentContact = () => {
       this.setState({form})
   }
 
+  addTag = () => {
+    const {newTag, form} = this.state
+    if(newTag.length == 0){
+      return
+    }
+    form["tags"].push(newTag)
+    this.setState({form, newTag:""})
+  }
+
+  onTagChange = e => this.setState({newTag: e.target.value})
+
   localSubmit= () => {
       const{onSubmit} = this.props
       const{form, contactId} = this.state
@@ -83,8 +100,13 @@ getCurrentContact = () => {
 
   render () {
       this.getCurrentContact()
-      const{form, contactId, editSuccess} = this.state
-      const{first_name, last_name, location, industry, email_address, phone_number, notes, login} = form
+      const{form, contactId, editSuccess, newTag, addingTag} = this.state
+      const{first_name, last_name, location, industry, email_address, phone_number, notes, login, tags} = form
+      let tagList = tags.map((tag, dex) => {
+        return(
+          <button key={dex} className = "tagSpacing">{tag}</button>
+        )
+      })
       return (
         <React.Fragment>
             {editSuccess ? <Redirect to={"/contacts/" + contactId.toString()} />: null}
@@ -143,6 +165,25 @@ getCurrentContact = () => {
                   <label className="col-form-label label-color" for="inputDefault">Notes</label>
                   <textarea name="notes" rows="5" columns="10" value = {notes} type="text" className="form-control" placeholder="Notes" id="inputDefault" onChange = {this.onChange} />
                 </div>
+
+                <div className="form-group">
+                  <div>
+                    <label className="col-form-label label-color" for="inputDefault">Tags</label>
+                    <img onClick = {this.changeAddTagState} src = {addButton} style={{width:"25px", height:"25px"}}/>
+                  </div>
+                  
+                  <div className = "flexTags">
+                    {tagList}
+                  </div>
+                </div>
+
+
+                {!addingTag ? null: <div className="form-group">
+                  <div className = "flexTagSearch">
+                    <input name="newTag" value={newTag} type="text" className="form-control" placeholder="Tag" id="inputDefault" onChange = {this.onTagChange} />
+                    <button onClick={this.addTag} className="btn btn-danger">Submit</button>
+                  </div>
+                </div>}
 
                 <br />
                 <button style = {{backgroundColor: "#FF6E86"}} onClick={this.localSubmit} type="submit" className="btn btn-primary contactButton">Submit</button>

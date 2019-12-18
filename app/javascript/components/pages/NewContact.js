@@ -15,7 +15,7 @@ import {
       ListGroup,
       ListGroupItem
      } from 'reactstrap'
-
+import addButton from "../../images/plusButton.png"
 
 
 export default class NewContact extends React.Component {
@@ -30,11 +30,17 @@ export default class NewContact extends React.Component {
                 email_address: "",
                 phone_number: "",
                 notes: "",
-                login: ""
+                login: "",
+                tags: []
             },
-            createSucess: false
+            createSucess: false,
+            addingTag: false,
+            newTag: ""
+
         }
     }
+
+    changeAddTagState = () => this.setState({addingTag: !this.state.addingTag})
 
     localSubmit = () => {
         const{onSubmit} = this.props
@@ -57,9 +63,26 @@ export default class NewContact extends React.Component {
         this.setState({form})
     }
 
+    addTag = () => {
+      const {newTag, form} = this.state
+      if(newTag.length == 0){
+        return
+      }
+      form["tags"].push(newTag)
+      this.setState({form, newTag:""})
+    }
+
+    onTagChange = e => this.setState({newTag: e.target.value})
+
     render () {
-        const{form, createSucess} = this.state
-        const{first_name, last_name, location, industry, email_address, phone_number, notes, login} = form
+        const{form, createSucess, newTag, addingTag} = this.state
+        const{first_name, last_name, location, industry, email_address, phone_number, notes, login, tags} = form
+        let tagList = tags.map((tag, dex) => {
+          return(
+            <button key={dex} className = "tagSpacing">{tag}</button>
+          )
+        })
+
         return (
             <React.Fragment>
                 {createSucess ? <Redirect to="/" />: null}
@@ -118,6 +141,25 @@ export default class NewContact extends React.Component {
                       <textarea name="notes" rows="5" columns="10" value = {notes} type="text" className="form-control" placeholder="Notes" id="inputDefault" onChange = {this.onChange} />
                     </div>
 
+                    <div className="form-group">
+                      <div>
+                        <label className="col-form-label label-color" for="inputDefault">Tags</label>
+                        <img onClick = {this.changeAddTagState} src = {addButton} style={{width:"25px", height:"25px"}}/>
+                      </div>
+                      
+                      <div className = "flexTags">
+                        {tagList}
+                      </div>
+                    </div>
+
+
+                    {!addingTag ? null: <div className="form-group">
+                      <div className = "flexTagSearch">
+                        <input name="newTag" value={newTag} type="text" className="form-control" placeholder="Tag" id="inputDefault" onChange = {this.onTagChange} />
+                        <button onClick={this.addTag} className="btn btn-danger">Submit</button>
+                      </div>
+                    </div>}
+                    
                     <br />
                     <button className="submit-button" onClick={this.localSubmit} type="submit" className="btn btn-primary contactButton" style = {{backgroundColor: "#FF6E86"}}>Submit</button>
                 </div>
