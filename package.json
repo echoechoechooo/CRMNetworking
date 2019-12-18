@@ -11,6 +11,8 @@
     "bootswatch": "^4.4.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
+    "react-alert": "^6.0.0",
+    "react-alert-template-basic": "^1.0.0",
     "react-calendar": "^2.19.2",
     "react-datetime-picker": "^2.8.0",
     "react-dom": "^16.12.0",

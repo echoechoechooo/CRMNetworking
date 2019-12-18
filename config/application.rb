@@ -25,7 +25,7 @@ module NetworkingCrm
     config.load_defaults 6.0
     config.hosts << "echo-net.herokuapp.com"
     config.hosts << "4519d5e5dcd14f16a10b95a770ebd2e8.vfs.cloud9.us-east-2.amazonaws.com"
-    config.hosts << "7856ddd94aa94400b519209321e5897c.vfs.cloud9.us-east-2.amazonaws.com"
+    config.hosts << "96545b46e2f6458aa828762512070d0c.vfs.cloud9.us-east-2.amazonaws.com"
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

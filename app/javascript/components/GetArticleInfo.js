@@ -14,10 +14,22 @@ export function getCompanySite (article) {
 
 export function getArticleTitle (article){
     let dashFound = false
-    return article.title.split(' ').filter(word => {
+    let title = ""
+    let titleArray = article.title.split(' ').filter(word => {
         if(word == "-"){
             dashFound = true
         }
         return !dashFound
-    }).join(' ')
+    })
+    let maxChar = 50
+    let curChar = 0
+    for(let i = 0; i < titleArray.length; i++){
+        curChar += titleArray[i].length
+        title += `${titleArray[i]} `
+        if(curChar >= maxChar){
+            title += "..."
+            break
+        }
+    }
+    return title
 }

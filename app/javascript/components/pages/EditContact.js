@@ -157,7 +157,7 @@ getCurrentContact = () => {
                 </div>
 
                 <div className="form-group">
-                  <label className="col-form-label label-color" for="inputDefault">Login</label>
+                  <label className="col-form-label label-color" for="inputDefault">GitHub Login</label>
                   <input name="login" value = {login} type="text" className="form-control" placeholder="Login" id="inputDefault" onChange = {this.onChange} />
                 </div>
 

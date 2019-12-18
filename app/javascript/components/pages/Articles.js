@@ -35,7 +35,7 @@ export default class Articles extends React.Component {
         })
         .then(output => {
           this.setState({articles: output.articles})
-      }); console.log(url)
+      }); 
     }
 
     onChange = (e) => {
@@ -43,32 +43,48 @@ export default class Articles extends React.Component {
       this.setState({keyword: value})
     }
 
+
     render () {
     const{articles, keyword} = this.state
+    const{contacts} = this.props
     let articlesDisplay = articles.map((article, index) => {
       return (
         <div key={index} className="articleFlexParent">
           <Card>
             <CardTitle><h3 style={{color:"white"}}>{article.title}</h3></CardTitle>
-            <CardImg top width="100%" src={article.urlToImage} alt="Card image cap" />
+            <CardImg top width="99%" src={article.urlToImage} alt="Card image cap" />
             <CardBody>
               <CardText>{article.description}</CardText>
+              <Button href = {article.url} target = "_blank">Read More</Button>
             </CardBody>
           </Card>
         </div>
       )
     })
-
-    
+    let contactsTagged = contacts.map((contact, index) => {
+      if(contact.tags.includes(keyword.toLowerCase())){
+        return (
+          <div key={index} className="contactsTagged">
+            <h1 className="tagTitle">
+              {
+              contact.first_name != null && contact.last_name != null ? `${contact.first_name} ${contact.last_name}` : contact.login
+              }
+            </h1>
+          </div>
+        )
+      }
+    })
     return (
       <div>
         <Form inline>
           <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-            <Label for="newsKeyword" className="mr-sm-2">Search News</Label>
             <Input onChange = {this.onChange} value={keyword} type="keyword" name="keyword" id="keyword" placeholder="Search" />
           </FormGroup>
           <Button onClick={this.articlesKeyword}>Submit</Button>
         </Form>
+        <div className="contactsTaggedParent">
+          {contactsTagged}
+        </div>
         <div className = "flexArticles">
           {articlesDisplay}
         </div>

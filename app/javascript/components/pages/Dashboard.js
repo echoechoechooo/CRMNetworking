@@ -1,5 +1,4 @@
 import React from "react"
-import Sidebar from "react-sidebar";
 import {Link} from "react-router-dom";
 import Calendar from 'react-calendar';
 import addButton from "../../images/plusButton.png"
@@ -7,11 +6,13 @@ import "../CalendarAlt.css"
 import {getCompanySite, getArticleTitle} from "../GetArticleInfo"
 let suggestedTags = ["augmented reality", "virtual reality", "computer vision", "technology"]
 
+
 export default class Dashboard extends React.Component {
     state = {
       date: new Date(),
       newTag: "",
-      addingTag: false
+      addingTag: false,
+      selectedTag: ""
     }
 
     updateUserTags = () => {
@@ -41,7 +42,6 @@ export default class Dashboard extends React.Component {
 
     getTagName = tag => {
       return tag
-      // return tag == "technology" ? "tech" : tag
     }
 
     addTag = () => {
@@ -51,6 +51,19 @@ export default class Dashboard extends React.Component {
       }
       this.props.current_user.tags.push(newTag)
       this.updateUserTags()
+    }
+
+    deleteTag = () => {
+      return this.props.deleteTagPress(this.state.selectedTag.length > 0, this.state.selectedTag)
+    }
+
+    selectTag = (tag) => {
+      if(tag != this.state.selectedTag){
+        this.setState({selectedTag: tag})
+      }
+      else {
+        this.setState({selectedTag: ""})
+      }
     }
 
     addSpecificTag = (tag) => {
@@ -96,7 +109,7 @@ export default class Dashboard extends React.Component {
     render () {
         const{contacts, todos, width, articles, current_user} = this.props
         let tags = current_user.tags
-        let{newTag, addingTag} = this.state
+        let{newTag, addingTag, selectedTag} = this.state
         let contactList =  contacts.map((contact, dex) => {
             return (
                 <tr key = {contact.id} className={dex == 0 ? "tableRowTop" : "tableRow"}>
@@ -117,18 +130,36 @@ export default class Dashboard extends React.Component {
         })
         let articleList = null
         if(Object.keys(articles).length > 0) {
-          // console.log(Object.keys(articles).map(key => articles[key]).reduce((arr, e) => arr.concat(e)))
-          // if(Object.keys(articles).length > 1){
-          //   // console.log(articles["technology"])
-          //   console.log(articles, Object.keys(articles), Object.keys(articles).map(key => articles[key]))
-          // }
-          articleList = Object.values(articles).reduce((arr, e) => arr.concat(e))
-          .map((article, dex) => {
+          let keyArray = Object.values(articles)
+          let maxArticles = 40
+          let numArticles = 0
+          let articleArray = []
+          for(let i = 0; i < keyArray.length; i++){
+            numArticles += keyArray[i].length
+          }
+          let stopPoint = numArticles < maxArticles ? numArticles : maxArticles
+          let articleCount = 0
+          let articleIndex = 0
+          let numKeys = keyArray.length
+          let tagDexArray = Array(numKeys).fill(0)
+          if(numKeys == 1){
+            articleArray = Object.values(articles).reduce((arr, e) => arr.concat(e))
+          }
+          else {
+            let valuesArray = Object.values(articles)
+            while(articleCount < stopPoint){
+              articleArray.push(valuesArray[articleIndex][tagDexArray[articleIndex]])
+              tagDexArray[articleIndex]++
+              articleIndex = articleIndex < numKeys - 1 ? articleIndex + 1 : 0
+              articleCount++
+            }
+          }
+          articleList = articleArray.map((article, dex) => {
             return (
               <div href = {article.url} key = {dex} className="articleFlex">
                 <div className="flex-item">
                   <img className = "articleThumbnail" src = {`//logo.clearbit.com/${getCompanySite(article)}`} />
-                  <a href = {article.url} className = "articleTitle">{getArticleTitle(article)}</a>
+                  <a href = {article.url} className = "articleTitle" target = "_blank">{getArticleTitle(article)}</a>
                   <div className = "articleTagsWrapper">
                     <div className = "tagFlexItem">
                       <h1 className = "tagTitle">{article.tag != null ? this.getTagName(article.tag) : ""}</h1>
@@ -139,12 +170,11 @@ export default class Dashboard extends React.Component {
             )
           })
         }
-        // console.log(Object.keys(articles).map(key => articles[key]).map(article => console.log(article)))
         let tagsList = tags.map((tag, dex) => {
           return(
-            <div key = {dex} className = "tagFlexItem">
-              <h1 className = "tagTitle">{this.getTagName(tag)}</h1>
-            </div>
+            <button key = {dex} className = "tagFlexItem" onClick = {() => this.selectTag(tag)}>
+              <h1 className = {tag != selectedTag ? "tagTitle" : "tagTitleSelected"}>{this.getTagName(tag)}</h1>
+            </button>
           )
         })
         let suggestedTagsList = suggestedTags.filter(suggestedTag => {
@@ -213,18 +243,30 @@ export default class Dashboard extends React.Component {
                   <h1 className = "articleHeader headerFont">Articles</h1>
                   <div className="sideArticlesTable">
                     <div className = "tagsWrapper">
-                      {!addingTag ? null : <div className="form-group addTagFlexItem">
+                      {!addingTag ? null : 
+                      <div className="form-group addTagFlexItem">
                         <input name="newTag" value = {newTag} type="text" className="form-control" placeholder="Add Tag" id="inputDefault" onChange = {this.changeNewTag} />
                       </div>}
                       {!addingTag ? null: suggestedTagsList}
                       {addingTag ? null : tagsList}
                     </div>
+                    <div className = "buttonTagsWrapper">
+                      <div className = "addTagButtonParent">
+                        <button onClick = {addingTag ? this.addTag: this.changeAddTagState} className = "headerFont addTagButton">Add</button>
+                      </div>
+                      <div className = "addTagButtonParent">
+                        <button onClick = {addingTag ? this.changeAddTagState: this.deleteTag} className = "headerFont deleteTagButton">{addingTag ? "Cancel": "Delete"}</button>
+                      </div>
+                    </div>
                   </div>
                   <h1 className = "sideArticleHeader headerFont">Tags</h1>
-                  {!addingTag ? null : <div className = "addTagButtonParent"><button onClick = {this.addTag} className = "headerFont addTagButton">Add</button></div>}
-                  <div className = "addTagPlus">
+                  {!addingTag && false ? null : <div className = "addTagButtonParent"><button onClick = {this.addTag} className = "headerFont addTagButton">Add</button></div>}
+                  {/* <div className = "addTagPlus">
                     <img onClick = {this.changeAddTagState} src = {addButton} className = "addTagsImage"/>
                   </div>
+                  <div className = "deleteTagPlus">
+                    <img onClick = {this.changeAddTagState} src = {deleteButton} className = "deleteTagsImage"/>
+                  </div> */}
                 </div>
             </div>
             </div>
@@ -232,22 +274,3 @@ export default class Dashboard extends React.Component {
         );
     }
 }
-
-{/* <Sidebar
-            children={<div></div>}
-            sidebar={
-                <table className="table table-hover" style = {{width: "15vw"}}>
-                  <thead>
-                    <tr>
-                      <th className = "headerFont" scope="col" style = {{fontSize: "24px", padding: "10px 0px 10px 0px", color:"white"}}>Contacts<Link to = {"/newcontact"} style={{padding: "0px 0px 0px 10px", float: "right"}}><img src = {addButton} style = {{width: "24px", height: "24px", verticalAlign: "inherit", textAlign: "right"}} /></Link></th>
-                    </tr>
-                  </thead>
-                  <tbody className="sidebar">
-                    {contactList}
-                  </tbody>
-                </table> }
-            docked = {true}
-            transitions = {false}
-            styles={{ sidebar: { top: "90px", background: "#0E0422"}, overlay: { backgroundColor:'clear', zIndex: -10 } }}
-            >
-            </Sidebar> */}
