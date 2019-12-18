@@ -15,7 +15,8 @@ src: url('house_on_mars-webfont.woff2') format('woff2'),
 url('house_on_mars-webfont.woff') format('woff');
 font-style: normal;
 font-weight: normal;
-text-shadow: 2px 2px 5px #42f5e6;"
+text-shadow: 2px 2px 5px #42f5e6;
+font-size: 40px"
 >Log in</h1>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -57,9 +58,10 @@ text-shadow: 2px 2px 5px #42f5e6;"
         font-style: normal;
         font-weight: normal;
         text-shadow: 2px 2px 5px #42f5e6;
+        font-size: 40px;
       ">About the Project</h1>
     </div>
-    <div style="text-align:left; width:1000px; margin:auto; margin-top:35px; margin-bottom:50px; text-align: justify;
+    <div style="text-align:left; width:75%; margin:auto; margin-top:35px; margin-bottom:50px; text-align: justify;
     text-justify: inter-word; color:white; font-size:18px;">
       <p>Tired of echoing into a void trying to connect with all the wonderful people you have met on your tech journey? Us too. Here at Echo Net we give you the tools to help you build out and track your technical professional network to build out meaningful interactions with your contacts.</p>
 
@@ -70,45 +72,44 @@ text-shadow: 2px 2px 5px #42f5e6;"
     <h1 style=
       "color:white; 
       font-family: 'houseonmars';
-      src: url('house_on_mars-webfont.woff2') format('woff2'),
-      url('house_on_mars-webfont.woff') format('woff');
-      font-style: normal;
       font-weight: normal;
-      text-shadow: 2px 2px 5px #42f5e6;"
+      text-shadow: 2px 2px 5px #42f5e6;
+      margin-bottom: 50px;
+      font-size: 40px"
     >Team Bio</h1>
   <div class = "userBioParent" >
-    <div class="polaroid">
+    <div class="polaroid flexWidth">
       <div class = "userBio">
       <img  src="/Christi_Headshot.jpg" class = "userPic" />
-      <h3>Christi Wright</h3>
+      <h3 class = "userName">Christi Wright</h3>
       <h4 class = "userDescription">
         "Hi there! I’m Christi and nothing excites me more than developing clean code that simplifies life. That’s why I am so pumped to have worked on Echo Net. The most fun part for me was working on the Linkedin and Github OAuth."
       </h4>
       </div>
     </div>
-    <div class="polaroid">
+    <div class="polaroid flexWidth">
       <div class = "userBio">
-      <img src="/Joe_Headshot.jpg" class = "userPic" />
-      <h3>Joseph Yuan</h3>
+      <img src="/Joe_Headshot_2.jpg" class = "userPic" />
+      <h3 class = "userName">Joseph Yuan</h3>
       <h4 class = "userDescription">
         "I thoroughly enjoyed collaborating with my amazing team as we struggled and succeeded at developing a product that could change the way you network."
       </h4>
       </div>
     </div>
     <br />
-    <div class="polaroid">
+    <div class="polaroid flexWidth">
     <div class = "userBio">
-      <img src="/pug.jpg" class = "userPic"/>
-      <h3>Ryan Young</h3>
+      <img src="/Ryan_Headshot.jpg" class = "userPic"/>
+      <h3 class = "userName">Ryan Young</h3>
       <h4 class = "userDescription">
-        "Yo!"
+        "From original inception to final deployment, developing EchoNet was a thoroughly rewarding experience that challenged me to solve problems on both the frontend and backend sides of web development.  I especially enjoyed integrating 3rd party APIs in React and creating responsive webpages with CSS."
       </h4>
       </div>
     </div>
-    <div class="polaroid">
+    <div class="polaroid flexWidth">
     <div class = "userBio">
       <img src="/Yumi_Headshot.jpg" class = "userPic" />
-      <h3>Yumi Park</h3>
+      <h3 class = "userName">Yumi Park</h3>
       <h4 class = "userDescription">
         "Building EchoNet was an informative experience - our team was constantly learning as we built the app. I enjoyed designing the retro throwback app with accessibility in mind."
       </h4>
