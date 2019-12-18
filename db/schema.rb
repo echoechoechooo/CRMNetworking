@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_12_17_114311) do
+=======
+ActiveRecord::Schema.define(version: 2019_12_10_215312) do
+>>>>>>> 3c6b6b545baf6ecaf47b7eb6c83897be5b7437fb
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +61,10 @@ ActiveRecord::Schema.define(version: 2019_12_17_114311) do
     t.string "strategy"
     t.text "followers_url"
     t.text "following_url"
+<<<<<<< HEAD
     t.string "tags", default: ["technology"], array: true
+=======
+>>>>>>> 3c6b6b545baf6ecaf47b7eb6c83897be5b7437fb
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["provider"], name: "index_users_on_provider"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
